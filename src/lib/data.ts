@@ -1,0 +1,156 @@
+export const profile = {
+  name: 'Pragdishwar',
+  handle: 'pragd',
+  role: 'Full-Stack Engineer · Embedded Systems · Financial Tech',
+  roleJP: 'フルスタックエンジニア · 組み込みシステム · 金融技術',
+  location: 'Chennai, IN',
+  locationJP: 'チェンナイ, インド',
+  systemVersion: 'v2.4.1-pro',
+  buildDate: '2026.04.09',
+  uptime: '99.7%',
+  status: 'ONLINE',
+  statusJP: 'オンライン',
+  japaneseLevel: 'JLPT N4 → N3',
+  japaneseLevelJP: 'JLPT N4 → N3 準備中',
+  bio: 'Engineering systems that bridge hardware precision with software scalability. Specializing in embedded IoT pipelines and financial-grade web architecture.',
+  bioJP: 'ハードウェアの精密さとソフトウェアのスケーラビリティを繋ぐシステムを構築。組み込みIoTパイプラインと金融グレードのWebアーキテクチャを専門とする。',
+};
+
+export const projects = [
+  {
+    id: 'earn2equity',
+    name: 'Earn2Equity',
+    nameJP: 'アーン・ツー・エクイティ',
+    type: 'FINANCIAL · PLATFORM',
+    typeJP: '金融 · プラットフォーム',
+    status: 'IN DEVELOPMENT',
+    statusJP: '開発中',
+    statusColor: 'amber',
+    description: 'Financial safety layer architecture for equity-stage progression. Multi-tier risk gating with compliance enforcement and real-time financial state management.',
+    descriptionJP: 'エクイティ段階進行のための金融安全層アーキテクチャ。コンプライアンス強制と財務状態管理を備えた多層リスクゲーティング。',
+    metrics: {
+      riskTiers: 3,
+      complianceGates: 7,
+      equityStages: 4,
+    },
+    stack: ['React', 'Next.js', 'Supabase', 'PostgreSQL', 'Stripe', 'TypeScript'],
+    stackType: 'sw',
+    safetyLayers: [
+      { label: 'Risk Tier Gate', value: 'ENFORCED', color: 'green' },
+      { label: 'Equity Stage Lock', value: 'ACTIVE', color: 'blue' },
+      { label: 'Compliance Check', value: 'PASSING', color: 'green' },
+      { label: 'Audit Trail', value: 'LOGGING', color: 'amber' },
+    ],
+    github: '#',
+    live: '#',
+  },
+  {
+    id: 'esp32-irrigation',
+    name: 'ESP32-CAM Irrigation',
+    nameJP: 'ESP32-CAM 灌漑システム',
+    type: 'EMBEDDED · IoT · VISION',
+    typeJP: '組み込み · IoT · ビジョン',
+    status: 'DEPLOYED',
+    statusJP: 'デプロイ済み',
+    statusColor: 'green',
+    description: 'Vision-assisted automated irrigation with real-time sensor pipeline. ESP32-CAM processes visual field data; MQTT streams to cloud; React dashboard renders live metrics.',
+    descriptionJP: 'リアルタイムセンサーパイプラインを備えたビジョン支援自動灌漑。ESP32-CAMが視覚フィールドデータを処理し、MQTTがクラウドにストリーミング。',
+    metrics: {
+      sensorCount: 4,
+      updateHz: 10,
+      uptimePct: 99.2,
+    },
+    stack: ['C++', 'Arduino', 'ESP32-CAM', 'MQTT', 'Supabase Realtime', 'React'],
+    stackType: 'mixed',
+    sensorData: [
+      { label: 'Soil Moisture', unit: '%', key: 'moisture' },
+      { label: 'Temperature', unit: '°C', key: 'temp' },
+      { label: 'Humidity', unit: '%', key: 'humidity' },
+      { label: 'Flow Rate', unit: 'L/min', key: 'flow' },
+    ],
+    github: '#',
+    live: '#',
+  },
+];
+
+export const skills = {
+  hardware: [
+    { name: 'C++ / Arduino', level: 85, icon: '⬡' },
+    { name: 'ESP32 / ESP8266', level: 88, icon: '⬡' },
+    { name: 'Sensor Integration', level: 82, icon: '⬡' },
+    { name: 'MQTT Protocol', level: 80, icon: '⬡' },
+    { name: 'PCB Prototyping', level: 65, icon: '⬡' },
+    { name: 'Computer Vision', level: 70, icon: '⬡' },
+  ],
+  software: [
+    { name: 'React / Next.js', level: 92, icon: '◈' },
+    { name: 'TypeScript', level: 88, icon: '◈' },
+    { name: 'Supabase', level: 90, icon: '◈' },
+    { name: 'PostgreSQL', level: 82, icon: '◈' },
+    { name: 'Tailwind CSS', level: 90, icon: '◈' },
+    { name: 'Node.js / API', level: 78, icon: '◈' },
+  ],
+  bridge: [
+    { from: 'C++ Firmware', to: 'MQTT Broker', protocol: 'Serial → WiFi' },
+    { from: 'MQTT Broker', to: 'Supabase Realtime', protocol: 'Pub/Sub' },
+    { from: 'Supabase Realtime', to: 'React Dashboard', protocol: 'WebSocket' },
+  ],
+};
+
+export const stats = [
+  { label: 'Projects', labelJP: 'プロジェクト', value: 12, suffix: '+' },
+  { label: 'System Uptime', labelJP: 'システム稼働率', value: 99, suffix: '.7%' },
+  { label: 'Commits', labelJP: 'コミット', value: 847, suffix: '' },
+  { label: 'JP Level', labelJP: '日本語レベル', value: 'N4', suffix: '' },
+];
+
+export const translations = {
+  en: {
+    systemLabel: 'ENGINEERING SYSTEM',
+    projects: 'PROJECTS',
+    skills: 'SKILL ARCHITECTURE',
+    bridge: 'HW / SW BRIDGE',
+    hardware: 'HARDWARE STACK',
+    software: 'SOFTWARE STACK',
+    stats: 'SYSTEM STATS',
+    terminal: 'TERMINAL',
+    terminalHint: 'Press [ T ] to open CLI',
+    langToggle: 'JP',
+    status: 'STATUS',
+    activity: 'RECENT ACTIVITY',
+    japanese: 'LANGUAGE SYSTEM',
+    jlpt: 'JLPT TRACK',
+  },
+  jp: {
+    systemLabel: 'エンジニアリングシステム',
+    projects: 'プロジェクト',
+    skills: 'スキルアーキテクチャ',
+    bridge: 'HW / SWブリッジ',
+    hardware: 'ハードウェアスタック',
+    software: 'ソフトウェアスタック',
+    stats: 'システム統計',
+    terminal: 'ターミナル',
+    terminalHint: '[ T ] でCLIを開く',
+    langToggle: 'EN',
+    status: 'ステータス',
+    activity: '最近の活動',
+    japanese: '言語システム',
+    jlpt: 'JPLTトラック',
+  },
+};
+
+export type Lang = 'en' | 'jp';
+
+export const cliCommands: Record<string, { desc: string; descJP: string }> = {
+  help:           { desc: 'List all available commands', descJP: '全コマンドを一覧表示' },
+  whoami:         { desc: 'Display identity card', descJP: 'IDカードを表示' },
+  projects:       { desc: 'List all projects', descJP: '全プロジェクトを一覧表示' },
+  skills:         { desc: 'Show skill architecture', descJP: 'スキルアーキテクチャを表示' },
+  'skills hw':    { desc: 'Show hardware skills', descJP: 'ハードウェアスキルを表示' },
+  'skills sw':    { desc: 'Show software skills', descJP: 'ソフトウェアスキルを表示' },
+  stats:          { desc: 'Show system statistics', descJP: 'システム統計を表示' },
+  'lang jp':      { desc: 'Switch UI to Japanese', descJP: 'UIを日本語に切替' },
+  'lang en':      { desc: 'Switch UI to English', descJP: 'UIを英語に切替' },
+  clear:          { desc: 'Clear terminal output', descJP: 'ターミナル出力をクリア' },
+  matrix:         { desc: '??? Easter egg', descJP: '??? イースターエッグ' },
+};
