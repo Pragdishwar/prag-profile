@@ -37,7 +37,7 @@ export default function ProfileExtras() {
             </div>
             <div className="flex flex-col gap-4">
               {education.map((edu, idx) => (
-                <div key={idx} className="glass-card p-6 rounded-xl border border-white/10 hover:border-primary/50 transition-colors relative overflow-hidden group">
+                <div key={idx} className="glass-card p-6 rounded-xl border border-white/10 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden group">
                   <div className="absolute top-0 left-0 w-1 h-full bg-primary origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-300" />
                   <h3 className="text-xl font-bold text-white mb-1">{edu.degree}</h3>
                   <h4 className="text-primary font-medium">{edu.institution}</h4>

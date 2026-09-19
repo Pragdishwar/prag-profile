@@ -37,7 +37,11 @@ export default function About() {
               alt={personalDetails.name} 
               className="w-full h-full object-cover rounded-xl"
             />
-            <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10 pointer-events-none" />
+            <motion.div 
+              animate={{ boxShadow: ["0 0 10px rgba(124,58,237,0.2)", "0 0 30px rgba(124,58,237,0.8)", "0 0 10px rgba(124,58,237,0.2)"] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-primary/30 pointer-events-none" 
+            />
           </div>
         </motion.div>
 
@@ -51,15 +55,15 @@ export default function About() {
           </motion.p>
 
           <motion.div variants={item} className="grid grid-cols-3 gap-4 mt-6">
-            <div className="glass-card p-6 rounded-xl text-center hover:-translate-y-1 transition-transform duration-300">
+            <div className="glass-card p-6 rounded-xl text-center hover:-translate-y-2 hover:scale-105 transition-all duration-300">
               <h3 className="text-4xl font-bold text-white mb-2">{personalDetails.stats.experience}+</h3>
               <p className="text-sm text-zinc-500 font-medium tracking-wide uppercase">Years Exp</p>
             </div>
-            <div className="glass-card p-6 rounded-xl text-center hover:-translate-y-1 transition-transform duration-300">
+            <div className="glass-card p-6 rounded-xl text-center hover:-translate-y-2 hover:scale-105 transition-all duration-300">
               <h3 className="text-4xl font-bold text-white mb-2">{personalDetails.stats.projects}+</h3>
               <p className="text-sm text-zinc-500 font-medium tracking-wide uppercase">Projects</p>
             </div>
-            <div className="glass-card p-6 rounded-xl text-center hover:-translate-y-1 transition-transform duration-300">
+            <div className="glass-card p-6 rounded-xl text-center hover:-translate-y-2 hover:scale-105 transition-all duration-300">
               <h3 className="text-4xl font-bold text-white mb-2">{personalDetails.stats.technologies}+</h3>
               <p className="text-sm text-zinc-500 font-medium tracking-wide uppercase">Tech</p>
             </div>

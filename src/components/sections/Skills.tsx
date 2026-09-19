@@ -40,6 +40,7 @@ export default function Skills() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
+              whileHover={{ y: -5 }}
               className="glass-card p-6 flex flex-col gap-6"
             >
               <h3 className="text-xl font-bold text-white mb-2">{category}</h3>
@@ -48,6 +49,7 @@ export default function Skills() {
                   <motion.div
                     key={skill.name}
                     variants={item}
+                    whileHover={{ scale: 1.05, x: 10 }}
                     className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/5 hover:bg-white/10 transition-colors"
                   >
                     <div className="p-2 rounded-md bg-white/5">

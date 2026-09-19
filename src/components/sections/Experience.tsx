@@ -43,7 +43,12 @@ export default function Experience() {
               {experience.map((exp) => (
                 <motion.div key={exp.id} variants={item} className="relative pl-12 md:pl-20">
                   {/* Timeline Dot */}
-                  <div className="absolute left-0 md:left-4 top-[32px] md:top-[40px] w-4 h-4 rounded-full bg-primary border-2 md:border-4 border-background z-10 hover:scale-125 transition-transform duration-300" />
+                  <motion.div 
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ type: 'spring', stiffness: 200, damping: 10, delay: 0.2 }}
+                    className="absolute left-0 md:left-4 top-[32px] md:top-[40px] w-4 h-4 rounded-full bg-primary border-2 md:border-4 border-background z-10 shadow-[0_0_15px_rgba(124,58,237,0.8)] hover:scale-150 transition-transform duration-300" 
+                  />
                   
                   <div className="glass-card p-6 md:p-8 rounded-2xl hover:-translate-y-1 transition-transform duration-300">
                     <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">

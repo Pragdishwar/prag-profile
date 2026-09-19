@@ -55,7 +55,12 @@ export default function Hero() {
           viewport={{ once: true }}
           className="max-w-3xl flex flex-col items-center gap-6"
         >
-          <motion.div variants={item} className="inline-block">
+          <motion.div 
+            variants={item} 
+            className="inline-block"
+            animate={{ y: [0, -5, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          >
             <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm font-medium tracking-wide shadow-[0_0_15px_rgba(255,255,255,0.05)] backdrop-blur-md">
               Available for new opportunities
             </span>
@@ -82,19 +87,40 @@ export default function Hero() {
             {personalDetails.bio} Based in {personalDetails.location}.
           </motion.p>
           
-          <motion.div variants={item} className="flex flex-wrap items-center justify-center gap-4 mt-4">
+          <motion.div variants={item} className="flex flex-wrap items-center justify-center gap-4 mt-8">
             <a
               href="#projects"
-              className="px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all hover:scale-105 shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)]"
+              className="px-8 py-4 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all hover:scale-105 shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.6)]"
             >
               View Projects
             </a>
             <a
               href="#contact"
-              className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-all hover:scale-105"
+              className="px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-all hover:scale-105"
             >
               Contact Me
             </a>
+          </motion.div>
+        </motion.div>
+
+        {/* Bouncing Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-zinc-500"
+        >
+          <span className="text-xs font-mono uppercase tracking-widest">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-5 h-8 border-2 border-zinc-500 rounded-full flex justify-center p-1"
+          >
+            <motion.div 
+              animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              className="w-1 h-1 bg-zinc-500 rounded-full"
+            />
           </motion.div>
         </motion.div>
       </div>
