@@ -3,6 +3,7 @@ export const personalDetails = {
   role: 'Full Stack Developer & AI Engineer',
   location: 'Chennai, Tamil Nadu, India',
   email: 'pragdishwar@gmail.com',
+  phone: '+91 00000 00000', // Update this with your real number
   socials: {
     github: 'https://github.com/Pragdishwar',
     linkedin: 'https://www.linkedin.com/in/pragdishwara/',

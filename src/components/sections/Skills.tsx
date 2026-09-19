@@ -29,7 +29,7 @@ const IconPlaceholder = () => (
 
 export default function Skills() {
   return (
-    <Section id="skills" title="Skills" number="02">
+    <Section id="skills" title="Skills" number="02" subtitle="技術・専門知識 • Expertise">
       <div className="flex flex-col gap-12">
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

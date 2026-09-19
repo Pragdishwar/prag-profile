@@ -21,7 +21,7 @@ const item: Variants = {
 
 export default function About() {
   return (
-    <Section id="about" title="About" number="01">
+    <Section id="about" title="About" number="01" subtitle="私について • Profile">
       <motion.div
         variants={container}
         initial="hidden"

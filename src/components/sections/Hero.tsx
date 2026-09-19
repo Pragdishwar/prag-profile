@@ -35,7 +35,7 @@ export default function Hero() {
             scale: [1, 1.2, 1],
           }} 
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-[20%] left-[-10%] md:left-[10%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] min-w-[400px] min-h-[400px] rounded-full bg-primary/20 blur-[120px]" 
+          className="absolute -top-[20%] left-[-10%] md:left-[10%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] min-w-[400px] min-h-[400px] rounded-full bg-pink-500/20 blur-[120px]" 
         />
         <motion.div 
           animate={{ 
@@ -43,7 +43,7 @@ export default function Hero() {
             scale: [1, 1.5, 1],
           }} 
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[30%] right-[-10%] md:right-[5%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] min-w-[300px] min-h-[300px] rounded-full bg-blue-600/20 blur-[120px]" 
+          className="absolute top-[30%] right-[-10%] md:right-[5%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] min-w-[300px] min-h-[300px] rounded-full bg-cyan-500/20 blur-[120px]" 
         />
       </div>
 
@@ -62,7 +62,7 @@ export default function Hero() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
             <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm font-medium tracking-wide shadow-[0_0_15px_rgba(255,255,255,0.05)] backdrop-blur-md">
-              Available for new opportunities
+              Available for new opportunities <span className="opacity-50 mx-1">•</span> <span className="text-primary font-bold">新しい機会を求めて</span>
             </span>
           </motion.div>
           

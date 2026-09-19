@@ -89,7 +89,7 @@ export default function Projects() {
   const filteredProjects = projects.filter(p => filter === 'All' || getCategory(p.techStack) === filter);
 
   return (
-    <Section id="projects" title="Featured Projects" number="03">
+    <Section id="projects" title="Featured Projects" number="03" subtitle="開発実績 • Portfolio">
       <div className="flex flex-col gap-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
