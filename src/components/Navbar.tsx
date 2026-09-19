@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import MagneticButton from './ui/MagneticButton';
 
 const navItems = [
@@ -16,6 +16,12 @@ const navItems = [
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState(navItems[0].name);
   const [scrolled, setScrolled] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +45,13 @@ export default function Navbar() {
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav py-4' : 'bg-transparent py-6'}`}>
-      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      {scrolled && (
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary origin-left shadow-[0_0_10px_rgba(124,58,237,0.8)]"
+          style={{ scaleX }}
+        />
+      )}
+      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between relative">
         <a href="#hero" className="text-xl font-bold tracking-tighter text-gradient" onClick={() => setActiveTab('Home')}>
           PA.
         </a>
@@ -91,4 +103,5 @@ export default function Navbar() {
     </header>
   );
 }
+
 
