@@ -1,111 +1,116 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import type { Lang } from '@/lib/data';
-import { translations } from '@/lib/data';
+import { translations, type Lang } from '@/lib/data';
 
-interface JapanesePanelProps { lang: Lang; }
-
-const jlptLevels = [
-  { level: 'N5', label: '基礎', status: 'complete', pct: 100 },
-  { level: 'N4', label: '初級', status: 'complete', pct: 100 },
-  { level: 'N3', label: '中級', status: 'active', pct: 42 },
-  { level: 'N2', label: '上級', status: 'locked', pct: 0 },
-  { level: 'N1', label: '上級', status: 'locked', pct: 0 },
+const JLPT = [
+  { level: 'N5', label: '初歩', pct: 100, done: true },
+  { level: 'N4', label: '初級', pct: 100, done: true },
+  { level: 'N3', label: '中級', pct: 42,  done: false, active: true },
+  { level: 'N2', label: '上級', pct: 0,   done: false },
+  { level: 'N1', label: '最高', pct: 0,   done: false },
 ];
 
-const vocab = [
-  { jp: '効率', en: 'efficiency', reading: 'kōritsu' },
-  { jp: '統合', en: 'integration', reading: 'tōgō' },
-  { jp: '制御', en: 'control', reading: 'seigyo' },
-  { jp: '構造', en: 'structure', reading: 'kōzō' },
+const VOCAB = [
+  { jp: '効率', en: 'efficiency',   reading: 'kōritsu' },
+  { jp: '統合', en: 'integration',  reading: 'tōgō' },
+  { jp: '制御', en: 'control',      reading: 'seigyo' },
+  { jp: '構造', en: 'structure',    reading: 'kōzō' },
+  { jp: '論理', en: 'logic',        reading: 'ronri' },
+  { jp: '実装', en: 'implementation',reading: 'jissō' },
 ];
 
-export default function JapanesePanel({ lang }: JapanesePanelProps) {
+export default function JapanesePanel({ lang }: { lang: Lang }) {
   const t = translations[lang];
 
   return (
-    <div className="bento-card p-5">
-      <div className="flex items-center justify-between mb-4">
-        <div className="section-label">{t.jlpt}</div>
+    <motion.div
+      className="card-base p-6"
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-30px' }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">{t.jlpt}</p>
         <div className="flex items-center gap-2">
-          <div className="pulse-dot blue" style={{ width: '5px', height: '5px' }} />
-          <span className="font-mono" style={{ fontSize: '9px', color: '#0ea5e9' }}>ACTIVE TRACK</span>
+          <div className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
+          <span className="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest">Active</span>
         </div>
       </div>
 
-      {/* JLPT Progress Track */}
-      <div className="flex items-end gap-2 mb-5">
-        {jlptLevels.map((l, i) => (
+      {/* JLPT bars — vertical columns */}
+      <div className="flex items-end gap-3 mb-8">
+        {JLPT.map((l, i) => (
           <motion.div
             key={l.level}
-            className="flex-1 flex flex-col items-center gap-1"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 * i + 0.3 }}
+            className="flex-1 flex flex-col items-center gap-2"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.08 * i + 0.1, duration: 0.4 }}
           >
-            <div className="font-jp text-xs" style={{ color: l.status === 'locked' ? '#1e293b' : '#0ea5e9' }}>
-              {l.label}
-            </div>
-            <div className="w-full rounded-sm overflow-hidden" style={{ height: '48px', background: 'rgba(14,165,233,0.04)', border: '1px solid rgba(14,165,233,0.08)' }}>
+            {/* pct label */}
+            {l.pct > 0 && (
+              <span className={`text-[9px] font-semibold ${l.active ? 'text-sky-600 dark:text-sky-400' : l.done ? 'text-muted-foreground' : 'text-neutral-400 dark:text-neutral-600'}`}>
+                {l.pct}%
+              </span>
+            )}
+
+            {/* column */}
+            <div
+              className="w-full rounded-md overflow-hidden relative bg-secondary"
+              style={{ height: '72px' }}
+            >
               <motion.div
-                className="w-full rounded-sm"
+                className="absolute bottom-0 left-0 right-0 rounded-md"
                 style={{
-                  height: `${l.pct}%`,
-                  marginTop: 'auto',
-                  background: l.status === 'active'
-                    ? 'linear-gradient(180deg, #0ea5e9, rgba(14,165,233,0.3))'
-                    : l.status === 'complete'
-                    ? 'linear-gradient(180deg, #0284c7, #0ea5e9)'
+                  background: l.active
+                    ? 'var(--primary)'
+                    : l.done
+                    ? 'var(--border)'
                     : 'transparent',
-                  position: 'absolute',
-                  bottom: 0,
                 }}
                 initial={{ height: 0 }}
-                animate={{ height: l.pct > 0 ? `${l.pct}%` : 0 }}
-                transition={{ duration: 1, delay: 0.15 * i + 0.5 }}
+                whileInView={{ height: `${l.pct}%` }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: 0.12 * i + 0.3, ease: [0.16, 1, 0.3, 1] }}
               />
-              <div className="flex flex-col-reverse h-full relative">
-                <motion.div
-                  className="w-full rounded-sm"
-                  style={{
-                    background: l.status === 'active'
-                      ? 'linear-gradient(0deg, rgba(14,165,233,0.5) 0%, rgba(14,165,233,0.15) 100%)'
-                      : l.status === 'complete'
-                      ? 'linear-gradient(0deg, #0284c7 0%, #0ea5e9 100%)'
-                      : 'transparent',
-                  }}
-                  initial={{ scaleY: 0, originY: 1 }}
-                  animate={{ scaleY: l.pct / 100 }}
-                  transition={{ duration: 1.2, delay: 0.12 * i + 0.5, ease: [0.2, 0, 0, 1] }}
-                />
-              </div>
             </div>
-            <span className="font-display font-bold" style={{ fontSize: '10px', color: l.status === 'locked' ? '#1e293b' : l.status === 'active' ? '#0ea5e9' : '#38bdf8' }}>
+
+            {/* label */}
+            <span
+              className={`text-[10px] font-bold tracking-wider ${l.active ? 'text-sky-600 dark:text-sky-400' : l.done ? 'text-foreground' : 'text-muted-foreground'}`}
+            >
               {l.level}
             </span>
+            <span className="text-[9px] text-muted-foreground">{l.label}</span>
           </motion.div>
         ))}
       </div>
 
-      {/* Vocabulary Tiles */}
-      <div className="section-label mb-2">SYSTEM VOCABULARY // 技術用語</div>
-      <div className="grid grid-cols-2 gap-2">
-        {vocab.map((v, i) => (
-          <motion.div
-            key={v.jp}
-            className="rounded p-2"
-            style={{ background: 'rgba(14,165,233,0.03)', border: '1px solid rgba(14,165,233,0.08)' }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 * i + 0.6 }}
-          >
-            <div className="font-jp text-lg font-bold text-glow-blue">{v.jp}</div>
-            <div className="font-mono" style={{ fontSize: '9px', color: '#475569' }}>{v.reading}</div>
-            <div className="font-sans text-xs" style={{ color: '#334155' }}>{v.en}</div>
-          </motion.div>
-        ))}
+      {/* Vocab grid */}
+      <div className="pt-6 border-t border-border">
+        <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider mb-4">Vocabulary Focus</p>
+        <div className="grid grid-cols-2 gap-3">
+          {VOCAB.map((v, i) => (
+            <motion.div
+              key={v.jp}
+              className="rounded-md p-3 bg-secondary/50 border border-border"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.05 * i + 0.2 }}
+              whileHover={{ y: -2 }}
+            >
+              <div className="text-lg font-bold text-foreground leading-none mb-1">{v.jp}</div>
+              <div className="text-[9px] font-medium text-muted-foreground mb-1">{v.reading}</div>
+              <div className="text-[10px] text-foreground/80">{v.en}</div>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

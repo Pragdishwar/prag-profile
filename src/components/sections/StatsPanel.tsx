@@ -1,62 +1,85 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
 import { stats, translations, type Lang } from '@/lib/data';
 
-interface StatsPanelProps { lang: Lang; }
+function useCountUp(target: number, duration = 1400, startDelay = 0) {
+  const [value, setValue] = useState(0);
+  const rafRef = useRef<number>(0);
 
-export default function StatsPanel({ lang }: StatsPanelProps) {
-  const t = translations[lang];
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const start = performance.now();
+      const step = (now: number) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // ease-out-expo
+        const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        setValue(Math.round(eased * target));
+        if (progress < 1) rafRef.current = requestAnimationFrame(step);
+      };
+      rafRef.current = requestAnimationFrame(step);
+    }, startDelay);
+
+    return () => { clearTimeout(timeout); cancelAnimationFrame(rafRef.current); };
+  }, [target, duration, startDelay]);
+
+  return value;
+}
+
+export default function StatsPanel({ lang }: { lang: Lang }) {
+  const [inView, setInView] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setInView(true); },
+      { threshold: 0.3 }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
 
   return (
-    <div className="bento-card p-5">
-      <div className="section-label mb-4">{t.stats}</div>
-      <div className="grid grid-cols-2 gap-3">
+    <motion.div
+      ref={ref}
+      className="card-base p-6"
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-30px' }}
+      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <div className="grid grid-cols-2 gap-4">
         {stats.map((s, i) => (
-          <motion.div
-            key={s.label}
-            className="rounded p-3 relative overflow-hidden"
-            style={{ background: 'rgba(0,255,157,0.02)', border: '1px solid rgba(0,255,157,0.06)' }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.08 * i + 0.5 }}
-          >
-            <div className="section-label mb-1" style={{ fontSize: '9px' }}>
-              {lang === 'en' ? s.label : s.labelJP}
-            </div>
-            <CountAnimated value={s.value} suffix={s.suffix} />
-          </motion.div>
+          <StatCell key={s.label} stat={s} lang={lang} active={inView} delay={i * 100} />
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
-function CountAnimated({ value, suffix }: { value: number | string; suffix: string }) {
-  const [display, setDisplay] = useState(0);
-  const isNum = typeof value === 'number';
-
-  useEffect(() => {
-    if (!isNum) return;
-    let start = 0;
-    const end = value as number;
-    const duration = 1200;
-    const step = Math.ceil(end / (duration / 16));
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= end) {
-        start = end;
-        clearInterval(timer);
-      }
-      setDisplay(start);
-    }, 16);
-    return () => clearInterval(timer);
-  }, [value, isNum]);
+function StatCell({ stat, lang, active, delay }: {
+  stat: { label: string; labelJP: string; value: number | string; suffix: string };
+  lang: Lang; active: boolean; delay: number;
+}) {
+  const isNum = typeof stat.value === 'number';
+  const count = useCountUp(active && isNum ? (stat.value as number) : 0, 1200, delay);
 
   return (
-    <div className="font-display font-bold text-2xl text-glow-green">
-      {isNum ? display : value}{suffix}
-    </div>
+    <motion.div
+      className="rounded-md p-4 bg-secondary/50 border border-border"
+      whileHover={{ scale: 1.02 }}
+    >
+      <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider mb-2">{lang === 'en' ? stat.label : stat.labelJP}</p>
+      <motion.div
+        className="text-2xl lg:text-3xl font-semibold text-foreground tracking-tight"
+        initial={{ opacity: 0, y: 6 }}
+        animate={{ opacity: active ? 1 : 0, y: active ? 0 : 6 }}
+        transition={{ duration: 0.4, delay: delay / 1000 }}
+      >
+        {isNum ? count : stat.value}{stat.suffix}
+      </motion.div>
+    </motion.div>
   );
 }
