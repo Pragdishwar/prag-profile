@@ -36,7 +36,7 @@ export default function SplitTextReveal({ text, className = '' }: { text: string
   }, []);
 
   return (
-    <h2 ref={ref} className={"text-gradient text-4xl md:text-5xl font-bold tracking-tight mb-4 " + className} style={{ perspective: "1000px" }}>
+    <h2 ref={ref} className={"text-white text-4xl md:text-5xl font-bold tracking-tight mb-4 " + className} style={{ perspective: "1000px" }}>
       {text.split('').map((char, i) => (
         <span key={i} className="split-char inline-block origin-bottom" style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}>
           {char}
@@ -45,3 +45,4 @@ export default function SplitTextReveal({ text, className = '' }: { text: string
     </h2>
   );
 }
+
