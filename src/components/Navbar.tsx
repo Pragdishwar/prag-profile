@@ -37,8 +37,8 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav py-4' : 'bg-transparent py-6'}`}>
-      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav pt-4 pb-4' : 'bg-transparent pt-6 pb-6'}`}>
+      <nav className="max-w-7xl ml-auto mr-auto pl-6 pr-6 flex items-center justify-between">
         <a href="#hero" className="text-xl font-bold tracking-tighter text-gradient" onClick={() => setActiveTab('Home')}>
           PA.
         </a>
@@ -49,7 +49,7 @@ export default function Navbar() {
             <li key={item.name}>
               <a
                 href={item.href}
-                className={`relative px-4 py-2 text-sm font-medium transition-colors ${
+                className={`relative pl-4 pr-4 pt-2 pb-2 text-sm font-medium transition-colors ${
                   activeTab === item.name ? 'text-white' : 'text-zinc-400 hover:text-white'
                 }`}
                 onClick={() => setActiveTab(item.name)}

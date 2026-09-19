@@ -104,7 +104,7 @@ export default function Terminal() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="fixed bottom-6 right-6 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-xs font-mono text-zinc-400 z-50 backdrop-blur-md hidden md:flex items-center gap-2 cursor-pointer hover:bg-white/10 hover:text-white transition-colors shadow-lg"
+          className="fixed bottom-6 right-6 bg-white/5 border border-white/10 pl-4 pr-4 pt-2 pb-2 rounded-full text-xs font-mono text-zinc-400 z-50 backdrop-blur-md hidden md:flex items-center gap-2 cursor-pointer hover:bg-white/10 hover:text-white transition-colors shadow-lg"
           onClick={() => setIsOpen(true)}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
@@ -123,7 +123,7 @@ export default function Terminal() {
             className="fixed inset-x-4 bottom-4 md:inset-auto md:bottom-6 md:right-6 md:w-[500px] h-[400px] bg-zinc-950/90 border border-white/10 rounded-xl z-[100] backdrop-blur-xl shadow-2xl flex flex-col font-mono text-sm overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-2 bg-white/5 border-b border-white/10">
+            <div className="flex items-center justify-between pl-4 pr-4 pt-2 pb-2 bg-white/5 border-b border-white/10">
               <div className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
                 <span className="text-zinc-300 text-xs font-semibold tracking-wider">SYSTEM_TERMINAL</span>

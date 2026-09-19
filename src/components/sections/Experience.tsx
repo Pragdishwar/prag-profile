@@ -27,11 +27,11 @@ export default function Experience() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Experience</h2>
-          <div className="h-1 w-20 bg-primary rounded-full mx-auto" />
+          <h2 className="text-white text-3xl md:text-4xl font-bold tracking-tight mb-4">Experience</h2>
+          <div className="h-1 w-20 bg-primary rounded-full ml-auto mr-auto" />
         </motion.div>
 
-        <div className="relative max-w-3xl mx-auto w-full">
+        <div className="relative max-w-3xl ml-auto mr-auto w-full">
           {/* Animated Timeline Line */}
           <motion.div 
             initial={{ height: 0 }}
@@ -46,7 +46,7 @@ export default function Experience() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="flex flex-col gap-8 md:gap-12 pl-12 md:pl-20 py-4"
+            className="flex flex-col gap-8 md:gap-12 pl-12 md:pl-20 pt-4 pb-4"
           >
             {experience.map((exp, idx) => (
               <motion.div key={exp.id} variants={item} className="relative group">
@@ -59,7 +59,7 @@ export default function Experience() {
                       <h3 className="text-2xl font-bold text-white">{exp.role}</h3>
                       <p className="text-lg text-primary font-medium">{exp.company}</p>
                     </div>
-                    <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm font-medium text-zinc-300 w-fit">
+                    <span className="pl-3 pr-3 pt-1 pb-1 bg-white/5 border border-white/10 rounded-full text-sm font-medium text-zinc-300 w-fit">
                       {exp.duration}
                     </span>
                   </div>

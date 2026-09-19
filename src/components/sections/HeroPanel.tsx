@@ -13,7 +13,7 @@ export default function HeroPanel({ lang, onLangToggle }: HeroPanelProps) {
   return (
     <div className="card-base">
       {/* Top rule */}
-      <div className="flex items-center gap-3 px-6 lg:px-8 py-4 border-b border-border bg-secondary/30">
+      <div className="flex items-center gap-3 pl-6 pr-6 lg:pl-8 pr-8 pt-4 pb-4 border-b border-border bg-secondary/30">
         <div className="w-2 h-2 rounded-full bg-emerald-500" />
         <span className="text-xs font-semibold text-foreground uppercase tracking-widest">Profile Identity</span>
         <div className="ml-auto flex items-center gap-4 text-[10px] uppercase tracking-wider text-muted-foreground font-medium">
@@ -23,7 +23,7 @@ export default function HeroPanel({ lang, onLangToggle }: HeroPanelProps) {
       </div>
 
       {/* Main content */}
-      <div className="px-6 lg:px-8 py-8 lg:py-12 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-16 items-start">
+      <div className="pl-6 pr-6 lg:pl-8 pr-8 pt-8 pb-8 lg:pt-12 pb-12 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-16 items-start">
         {/* Left — identity */}
         <div>
           <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-4">Lead Architect</p>
@@ -92,7 +92,7 @@ function CtaButton({ onClick, variant, label }: { onClick: () => void; variant: 
   return (
     <motion.button
       onClick={onClick}
-      className={`text-xs font-semibold px-5 py-2.5 rounded-md transition-colors ${styles}`}
+      className={`text-xs font-semibold pl-5 pr-5 pt-2 pb-2.5 rounded-md transition-colors ${styles}`}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
     >
@@ -103,7 +103,7 @@ function CtaButton({ onClick, variant, label }: { onClick: () => void; variant: 
 
 function StatusRow({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
   return (
-    <div className="flex items-center justify-between gap-4 py-2.5 px-3 rounded-md bg-secondary/40 border border-border">
+    <div className="flex items-center justify-between gap-4 pt-2 pb-2.5 pl-3 pr-3 rounded-md bg-secondary/40 border border-border">
       <span className="text-xs font-medium text-muted-foreground">{label}</span>
       <span className={`text-xs font-semibold ${highlight ? 'text-emerald-600 dark:text-emerald-400' : 'text-foreground'}`}>
         {value}

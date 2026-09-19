@@ -2,17 +2,17 @@ export const personalDetails = {
   name: 'Pragdishwar A',
   role: 'Full Stack Developer & AI Engineer',
   location: 'Chennai, Tamil Nadu, India',
-  email: 'pragdish@example.com',
+  email: 'pragdishwar@gmail.com',
   socials: {
     github: 'https://github.com/Pragdishwar',
-    linkedin: 'https://linkedin.com/in/pragdishwar',
+    linkedin: 'https://www.linkedin.com/in/pragdishwara/',
     twitter: 'https://twitter.com/pragdishwar',
   },
   profilePhoto: 'https://ui-avatars.com/api/?name=Pragdishwar+A&size=200&background=7C3AED&color=fff',
   bio: "I'm a Full Stack Developer & AI Engineer specialized in building GenAI-driven applications, real-time synchronization systems, and intelligent IoT dashboards. My work focuses on bridging high-fidelity UI/UX with complex backend architectures and AI models.",
   stats: {
-    experience: 3,
-    projects: 15,
+    experience: 2,
+    projects: 8,
     technologies: 20
   }
 };
@@ -61,6 +61,7 @@ export const projects: Project[] = [
     longDescription: 'An intelligent marine advisory platform for the Muthalapozhi inlet in Kerala. It answers natural-language queries about crossing the harbour bar with deterministic verdicts, return windows, and turn-back times specific to hull classes, utilizing synthetic marine data and an agentic rule engine.',
     techStack: ['React', 'Python', 'FastAPI', 'MapLibre GL', 'Zustand', 'Tailwind CSS'],
     githubLink: 'https://github.com/Pragdishwar/ORCA',
+    liveLink: '    https://orca-nav.vercel.app/',
     image: 'https://images.unsplash.com/photo-1590432577610-86b2bbbd3c65?auto=format&fit=crop&q=80&w=800&h=600'
   },
   {
@@ -89,6 +90,7 @@ export const projects: Project[] = [
     longDescription: 'A full-stack application for anomaly detection and visualization. Features a Python backend for data ingestion and a React (Vite) frontend with Recharts, MotifHighlighter, and interactive failure marking capabilities.',
     techStack: ['React', 'Vite', 'Recharts', 'Python', 'FastAPI'],
     githubLink: 'https://github.com/Pragdishwar/Anomaly-Grammar',
+    liveLink: 'https://anomaly-grammar.vercel.app',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=600'
   },
   {
@@ -108,6 +110,7 @@ export const projects: Project[] = [
     longDescription: 'A full-stack application designed to optimize delivery routes by considering real-time weather constraints and the perishability of goods. Integrates TomTom Routing and OpenWeather APIs to compute an intelligent routing score, ensuring efficient logistics for sensitive cargo.',
     techStack: ['FastAPI', 'React', 'PostgreSQL', 'TomTom API', 'OpenWeather API', 'Docker'],
     githubLink: 'https://github.com/Pragdishwar/routemonk',
+    liveLink: 'https://routemonk-pro.vercel.app',
     image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800&h=600'
   },
   {

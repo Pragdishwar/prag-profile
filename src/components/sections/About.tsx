@@ -43,7 +43,7 @@ export default function About() {
 
         <div className="w-full md:w-2/3 flex flex-col gap-6">
           <motion.div variants={item}>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">About Me</h2>
+            <h2 className="text-white text-3xl md:text-4xl font-bold tracking-tight mb-2">About Me</h2>
             <div className="h-1 w-20 bg-primary rounded-full" />
           </motion.div>
 

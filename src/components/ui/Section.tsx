@@ -14,10 +14,10 @@ export default function Section({ id, children, className = '', delay = 0 }: Sec
   return (
     <motion.section
       id={id}
-      className={`min-h-screen py-20 px-6 lg:pl-24 max-w-7xl mx-auto flex flex-col justify-center ${className}`}
+      className={`min-h-screen pt-20 pb-20 pl-6 pr-6 lg:pl-24 max-w-7xl ml-auto mr-auto flex flex-col justify-center ${className}`}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ 
         type: 'spring', 
         stiffness: 100, 
