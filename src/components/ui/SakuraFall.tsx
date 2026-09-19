@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
@@ -26,10 +26,10 @@ export default function SakuraFall() {
       {petals.map((petal) => (
         <motion.div
           key={petal.id}
-          initial={{ top: '-5%', left: ${petal.left}%, opacity: 0, rotate: petal.rotation }}
+          initial={{ top: '-5%', left: `${petal.left}%`, opacity: 0, rotate: petal.rotation }}
           animate={{ 
             top: '110%', 
-            left: [${petal.left}%, ${petal.left + (Math.random() * 15 - 7.5)}%, ${petal.left - (Math.random() * 15 - 7.5)}%, ${petal.left}%],
+            left: [`${petal.left}%`, `${petal.left + (Math.random() * 15 - 7.5)}%`, `${petal.left - (Math.random() * 15 - 7.5)}%`, `${petal.left}%`],
             opacity: [0, 1, 1, 0],
             rotate: petal.rotation + (Math.random() > 0.5 ? 360 : -360)
           }}
