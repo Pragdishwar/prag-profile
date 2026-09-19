@@ -1,6 +1,7 @@
-'use client';
+﻿'use client';
 
 import { motion, Variants } from 'framer-motion';
+import SpotlightCard from '../ui/SpotlightCard';
 import Section from '../ui/Section';
 import { experience } from '../../data/portfolio';
 
@@ -19,7 +20,7 @@ const item: Variants = {
 
 export default function Experience() {
   return (
-    <Section id="experience" title="Experience" number="04" subtitle="職歴・経験 • Journey">
+    <Section id="experience" title="Experience" number="04" subtitle="è·æ­´ãƒ»çµŒé¨“ â€¢ Journey">
       <div className="flex flex-col gap-12">
 
         <div className="max-w-3xl mx-auto w-full px-4 sm:px-6 md:px-8">
@@ -50,7 +51,7 @@ export default function Experience() {
                     className="absolute left-0 md:left-4 top-[32px] md:top-[40px] w-4 h-4 rounded-full bg-primary border-2 md:border-4 border-background z-10 shadow-[0_0_15px_rgba(124,58,237,0.8)] hover:scale-150 transition-transform duration-300" 
                   />
                   
-                  <div className="glass-card p-6 md:p-8 rounded-2xl hover:-translate-y-1 transition-transform duration-300">
+                  <SpotlightCard className="p-6 md:p-8 rounded-2xl">
                     <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
                       <div>
                         <h3 className="text-2xl font-bold text-white">{exp.role}</h3>
@@ -71,7 +72,7 @@ export default function Experience() {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </SpotlightCard>
                 </motion.div>
               ))}
             </motion.div>
@@ -81,3 +82,5 @@ export default function Experience() {
     </Section>
   );
 }
+
+
