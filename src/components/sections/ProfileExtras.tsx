@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Section from '../ui/Section';
 import { education, certifications, languages } from '../../data/portfolio';
+import { GitHubCalendar } from 'react-github-calendar';
 
 export default function ProfileExtras() {
   const [certIndex, setCertIndex] = useState(0);
@@ -139,6 +140,35 @@ export default function ProfileExtras() {
                   className={`h-2 rounded-full transition-all duration-300 ${idx === certIndex ? 'w-8 bg-primary shadow-[0_0_10px_rgba(124,58,237,0.5)]' : 'w-2 bg-white/20 hover:bg-white/40'}`}
                 />
               ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* GitHub Contributions Graph */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          className="flex flex-col gap-6 w-full mt-12"
+        >
+          <div className="flex flex-col items-start w-full">
+            <h3 className="text-white text-2xl font-bold tracking-tight mb-2">Code Contributions</h3>
+            <p className="text-zinc-400 text-sm">Live GitHub contribution graph</p>
+          </div>
+          
+          <div className="glass-card p-6 md:p-8 rounded-2xl border border-white/10 w-full overflow-x-auto flex justify-center shadow-2xl relative group">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/5 blur-[80px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+            <div className="min-w-fit">
+              <GitHubCalendar 
+                username="Pragdishwar" 
+                colorScheme="dark"
+                theme={{
+                  dark: ['#18181b', '#3b0764', '#6b21a8', '#9333ea', '#c084fc'] // Purple neon theme mapping
+                }}
+                fontSize={14}
+                blockSize={12}
+                blockMargin={4}
+              />
             </div>
           </div>
         </motion.div>

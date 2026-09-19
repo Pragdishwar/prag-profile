@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -56,7 +56,7 @@ export default function BootScreen() {
                   key={i}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className={\\\}
+                  className={i === bootLines.length - 1 ? 'text-green-500' : 'text-zinc-400'}
                 >
                   <span className="text-primary mr-2">&gt;</span>
                   {line}

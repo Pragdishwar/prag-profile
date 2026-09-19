@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cliCommands, profile, skills } from '../../lib/data';
+import { playBlip, playWhoosh } from '../../lib/audio';
 
 interface CommandHistory {
   cmd: string;
@@ -30,9 +31,11 @@ export default function Terminal() {
       if ((e.ctrlKey && e.key === '`') || (!isOpen && e.key.toLowerCase() === 't' && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA')) {
         e.preventDefault();
         setIsOpen((prev) => !prev);
+        playWhoosh();
       }
       if (e.key === 'Escape' && isOpen) {
         setIsOpen(false);
+        playWhoosh();
       }
     };
 
@@ -211,6 +214,11 @@ export default function Terminal() {
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key !== 'Enter' && e.key !== 'Escape') {
+                      playBlip();
+                    }
+                  }}
                   className="flex-1 bg-transparent outline-none text-zinc-100 placeholder:text-zinc-700"
                   spellCheck={false}
                   autoComplete="off"
