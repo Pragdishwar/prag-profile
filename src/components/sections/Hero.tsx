@@ -47,7 +47,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-20 flex flex-col justify-center items-center text-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-20 pb-48 flex flex-col justify-center items-center text-center">
         <motion.div
           variants={container}
           initial="hidden"
@@ -106,7 +106,7 @@ export default function Hero() {
       </div>
 
       {/* Infinite Marquee */}
-      <div className="absolute bottom-24 left-0 w-full overflow-hidden border-y-2 border-[#ccff00] py-4 bg-black z-20">
+      <div className="absolute bottom-24 left-0 w-full overflow-hidden border-y-2 border-primary py-4 bg-zinc-950/50 backdrop-blur-md z-20">
         <motion.div 
           className="flex whitespace-nowrap w-max"
           animate={{ x: ["0%", "-50%"] }}
