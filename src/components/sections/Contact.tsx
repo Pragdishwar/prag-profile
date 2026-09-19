@@ -84,64 +84,60 @@ export default function Contact() {
             transition={{ type: 'spring', stiffness: 100, damping: 15, delay: 0.2 }}
             className="w-full md:w-2/3"
           >
-            <form onSubmit={handleSubmit} className="glass-card p-6 md:p-8 flex flex-col gap-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-2 relative">
-                  <label htmlFor="name" className={`text-sm font-medium transition-colors ${focusedField === 'name' ? 'text-primary' : 'text-zinc-400'}`}>Name</label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    required
-                    onFocus={() => setFocusedField('name')}
-                    onBlur={() => setFocusedField(null)}
-                    className="bg-zinc-900/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 w-full"
-                    placeholder="John Doe"
-                  />
-                  {focusedField === 'name' && (
-                    <motion.div layoutId="form-focus" className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-primary rounded-b-lg" transition={{ type: "spring", stiffness: 300, damping: 30 }} />
-                  )}
-                </div>
-                
-                <div className="flex flex-col gap-2 relative">
-                  <label htmlFor="email" className={`text-sm font-medium transition-colors ${focusedField === 'email' ? 'text-primary' : 'text-zinc-400'}`}>Email</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    required
-                    onFocus={() => setFocusedField('email')}
-                    onBlur={() => setFocusedField(null)}
-                    className="bg-zinc-900/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 w-full"
-                    placeholder="john@example.com"
-                  />
-                  {focusedField === 'email' && (
-                    <motion.div layoutId="form-focus" className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-primary rounded-b-lg" transition={{ type: "spring", stiffness: 300, damping: 30 }} />
-                  )}
-                </div>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full">
+              
+              <div className="flex flex-col gap-2">
+                <label htmlFor="name" className="text-xs font-mono tracking-widest text-zinc-400 uppercase">Your Name</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  required
+                  className="bg-[#111] border border-zinc-700/50 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors w-full"
+                  placeholder="John Doe"
+                />
+              </div>
+              
+              <div className="flex flex-col gap-2">
+                <label htmlFor="email" className="text-xs font-mono tracking-widest text-zinc-400 uppercase">Your Email</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  required
+                  className="bg-[#111] border border-zinc-700/50 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors w-full"
+                  placeholder="john@example.com"
+                />
               </div>
 
-              <div className="flex flex-col gap-2 relative">
-                <label htmlFor="message" className={`text-sm font-medium transition-colors ${focusedField === 'message' ? 'text-primary' : 'text-zinc-400'}`}>Message</label>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="subject" className="text-xs font-mono tracking-widest text-zinc-400 uppercase">Subject</label>
+                <input 
+                  type="text" 
+                  id="subject" 
+                  required
+                  className="bg-[#111] border border-zinc-700/50 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors w-full"
+                  placeholder="Project Opportunity / Collaboration"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="message" className="text-xs font-mono tracking-widest text-zinc-400 uppercase">Message</label>
                 <textarea 
                   id="message" 
                   required
                   rows={5}
-                  onFocus={() => setFocusedField('message')}
-                  onBlur={() => setFocusedField(null)}
-                  className="bg-zinc-900/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 w-full resize-none"
-                  placeholder="Tell me about your project..."
+                  className="bg-[#111] border border-zinc-700/50 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors w-full resize-none"
+                  placeholder="Hi Pragdishwar, I saw your portfolio and would love to discuss..."
                 />
-                {focusedField === 'message' && (
-                  <motion.div layoutId="form-focus" className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-primary rounded-b-lg" transition={{ type: "spring", stiffness: 300, damping: 30 }} />
-                )}
               </div>
 
               <motion.button 
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
                 type="submit" 
-                className="w-full py-4 rounded-lg bg-primary text-white font-bold tracking-wide hover:bg-primary/90 transition-colors shadow-[0_0_20px_rgba(124,58,237,0.2)] mt-2"
+                className="w-full py-4 rounded-md bg-[#ccff00] text-black font-bold tracking-wider uppercase flex items-center justify-center gap-2 mt-2 hover:bg-[#b3ff00] transition-colors"
               >
                 Send Message
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
               </motion.button>
             </form>
           </motion.div>

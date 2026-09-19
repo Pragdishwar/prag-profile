@@ -103,41 +103,42 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Infinite Marquee */}
-        <div className="absolute bottom-24 left-0 w-full overflow-hidden border-y-2 border-[#ccff00] py-4 bg-zinc-950/50 backdrop-blur-md z-20">
-          <motion.div 
-            className="flex whitespace-nowrap w-max"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
-          >
-            {[...Array(2)].map((_, i) => (
-              <div key={i} className="flex shrink-0 items-center">
-                {['FRONTEND DEVELOPMENT', 'AI ENGINEERING', 'EMBEDDED SYSTEMS', 'FULL STACK ARCHITECTURE', 'INTELLIGENT IoT'].map((item, j) => (
-                  <div key={j} className="flex items-center">
-                    <span className="text-white font-black text-xl md:text-2xl tracking-widest px-8 md:px-12 uppercase">{item}</span>
-                    <div className="w-3 h-3 bg-pink-500 rounded-sm shadow-[0_0_10px_rgba(236,72,153,0.8)]" />
-                  </div>
-                ))}
-              </div>
-            ))}
-          </motion.div>
-        </div>
+      </div>
 
-        {/* Scroll Indicator */}
+      {/* Infinite Marquee */}
+      <div className="absolute bottom-24 left-0 w-full overflow-hidden border-y-2 border-[#ccff00] py-4 bg-black z-20">
         <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-zinc-500 z-20"
+          className="flex whitespace-nowrap w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
         >
-          <span className="text-[10px] font-mono uppercase tracking-[0.3em]">Scroll</span>
-          <motion.div
-            animate={{ height: ["0px", "20px", "0px"], opacity: [0, 1, 0], y: [0, 10, 20] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-px bg-zinc-500"
-          />
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex shrink-0 items-center">
+              {['FRONTEND DEVELOPMENT', 'AI ENGINEERING', 'EMBEDDED SYSTEMS', 'FULL STACK ARCHITECTURE', 'INTELLIGENT IoT'].map((item, j) => (
+                <div key={j} className="flex items-center">
+                  <span className="text-white font-black text-xl md:text-2xl tracking-widest px-8 md:px-12 uppercase">{item}</span>
+                  <div className="w-3 h-3 bg-pink-500 rounded-sm shadow-[0_0_10px_rgba(236,72,153,0.8)]" />
+                </div>
+              ))}
+            </div>
+          ))}
         </motion.div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-zinc-500 z-20"
+      >
+        <span className="text-[10px] font-mono uppercase tracking-[0.3em]">Scroll</span>
+        <motion.div
+          animate={{ height: ["0px", "20px", "0px"], opacity: [0, 1, 0], y: [0, 10, 20] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="w-px bg-zinc-500"
+        />
+      </motion.div>
     </div>
   );
 }
