@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '../components/Navbar';
-import Cursor from '../components/ui/Cursor';
 import Terminal from '../components/ui/Terminal';
 
 export const metadata: Metadata = {
@@ -14,7 +13,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="antialiased bg-background text-foreground overflow-x-hidden">
-        <Cursor />
         <Terminal />
         <Navbar />
         {children}
