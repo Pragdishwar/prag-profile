@@ -1,8 +1,9 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '../components/Navbar';
 import Terminal from '../components/ui/Terminal';
 import BootScreen from '../components/ui/BootScreen';
+import SmoothScroll from '../components/ui/SmoothScroll';
 
 export const metadata: Metadata = {
   title: 'Pragdishwar A | Full Stack & AI Engineer',
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     siteName: 'Pragdishwar Portfolio',
     images: [
       {
-        url: 'https://api.microlink.io/?url=https%3A%2F%2Fpragdishwar.vercel.app&screenshot=true&meta=false&embed=screenshot.url', // Uses microlink to generate a live screenshot of the site
+        url: 'https://api.microlink.io/?url=https%3A%2F%2Fpragdishwar.vercel.app&screenshot=true&meta=false&embed=screenshot.url',
         width: 1200,
         height: 630,
         alt: 'Pragdishwar Portfolio Screenshot',
@@ -37,10 +38,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="antialiased bg-background text-foreground overflow-x-hidden">
-        <BootScreen />
-        <Terminal />
-        <Navbar />
-        {children}
+        <SmoothScroll>
+          <BootScreen />
+          <Terminal />
+          <Navbar />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

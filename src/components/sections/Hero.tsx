@@ -1,7 +1,9 @@
-'use client';
+﻿'use client';
 
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants, useMotionValue, useSpring } from 'framer-motion';
+import { useEffect } from 'react';
 import Section from '../ui/Section';
+import MagneticButton from '../ui/MagneticButton';
 import { personalDetails } from '../../data/portfolio';
 
 const container: Variants = {
@@ -25,6 +27,19 @@ const item: Variants = {
 };
 
 export default function Hero() {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX - window.innerWidth / 2);
+      mouseY.set(e.clientY - window.innerHeight / 2);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY]);
   return (
     <div id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background spanning full width of the screen */}
@@ -35,6 +50,7 @@ export default function Hero() {
             scale: [1, 1.2, 1],
           }} 
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          style={{ x: springX, y: springY }}
           className="absolute -top-[20%] left-[-10%] md:left-[10%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] min-w-[400px] min-h-[400px] rounded-full bg-pink-500/20 blur-[120px]" 
         />
         <motion.div 
@@ -43,6 +59,7 @@ export default function Hero() {
             scale: [1, 1.5, 1],
           }} 
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          style={{ x: useSpring(mouseX, { stiffness: 40, damping: 25 }), y: useSpring(mouseY, { stiffness: 40, damping: 25 }) }}
           className="absolute top-[30%] right-[-10%] md:right-[5%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] min-w-[300px] min-h-[300px] rounded-full bg-cyan-500/20 blur-[120px]" 
         />
       </div>
@@ -62,7 +79,7 @@ export default function Hero() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
             <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm font-medium tracking-wide shadow-[0_0_15px_rgba(255,255,255,0.05)] backdrop-blur-md">
-              Available for new opportunities <span className="opacity-50 mx-1">•</span> <span className="text-primary font-bold">新しい機会を求めて</span>
+              Available for new opportunities <span className="opacity-50 mx-1">â€¢</span> <span className="text-primary font-bold">æ–°ã—ã„æ©Ÿä¼šã‚’æ±‚ã‚ã¦</span>
             </span>
           </motion.div>
           
@@ -109,18 +126,22 @@ export default function Hero() {
           </motion.div>
           
           <motion.div variants={item} className="flex flex-wrap items-center justify-center gap-4 mt-8">
-            <a
-              href="#projects"
-              className="px-8 py-4 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all hover:scale-105 shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.6)]"
-            >
-              View Projects
-            </a>
-            <a
-              href="#contact"
-              className="px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-all hover:scale-105"
-            >
-              Contact Me
-            </a>
+            <MagneticButton>
+              <a
+                href="#projects"
+                className="inline-block px-8 py-4 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.6)]"
+              >
+                View Projects
+              </a>
+            </MagneticButton>
+            <MagneticButton>
+              <a
+                href="#contact"
+                className="inline-block px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-all"
+              >
+                Contact Me
+              </a>
+            </MagneticButton>
           </motion.div>
         </motion.div>
 
@@ -163,3 +184,5 @@ export default function Hero() {
     </div>
   );
 }
+
+
