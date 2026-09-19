@@ -39,7 +39,7 @@ export default function Section({ id, children, className = '', delay = 0, title
             scale: [1, 1.1, 0.9, 1]
           }} 
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className={`absolute ${isEven ? 'top-[10%] left-[10%]' : 'bottom-[10%] right-[10%]'} w-72 h-72 rounded-full bg-primary/10 blur-[100px]`} 
+          className={`absolute ${isEven ? 'top-[10%] left-[10%]' : 'bottom-[10%] right-[10%]'} w-72 h-72 rounded-full bg-primary/30 blur-[100px]`} 
         />
         <motion.div 
           animate={{ 
@@ -48,7 +48,7 @@ export default function Section({ id, children, className = '', delay = 0, title
             scale: [1, 1.2, 0.8, 1]
           }} 
           transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-          className={`absolute ${isEven ? 'bottom-[20%] right-[5%]' : 'top-[20%] left-[5%]'} w-96 h-96 rounded-full bg-blue-500/10 blur-[100px]`} 
+          className={`absolute ${isEven ? 'bottom-[20%] right-[5%]' : 'top-[20%] left-[5%]'} w-96 h-96 rounded-full bg-blue-500/30 blur-[120px]`} 
         />
         <motion.div 
           animate={{ 
@@ -57,7 +57,7 @@ export default function Section({ id, children, className = '', delay = 0, title
             scale: [1, 0.9, 1.1, 1]
           }} 
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className={`absolute ${isEven ? 'top-[40%] right-[40%]' : 'bottom-[40%] left-[40%]'} w-64 h-64 rounded-full bg-purple-600/10 blur-[100px]`} 
+          className={`absolute ${isEven ? 'top-[40%] right-[40%]' : 'bottom-[40%] left-[40%]'} w-64 h-64 rounded-full bg-purple-600/30 blur-[90px]`} 
         />
       </div>
 
@@ -73,8 +73,8 @@ export default function Section({ id, children, className = '', delay = 0, title
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-white text-4xl md:text-5xl font-bold tracking-tight mb-4">{title}</h2>
-            <div className="h-1 w-16 bg-primary" />
+            <h2 className="text-gradient text-4xl md:text-5xl font-bold tracking-tight mb-4">{title}</h2>
+            <div className="h-1 w-16 bg-gradient-to-r from-primary to-blue-500 rounded-full" />
           </motion.div>
         </div>
       )}

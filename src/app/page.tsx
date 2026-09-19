@@ -22,7 +22,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="text-center py-16 text-zinc-500 text-sm border-t border-white/5 flex flex-col items-center justify-center gap-2">
         <p>© {new Date().getFullYear()} Pragdishwar A.</p>
-        <p className="font-mono text-xs tracking-widest uppercase text-zinc-600 mt-2">Built with intent.</p>
+        <p className="font-mono text-xs tracking-widest uppercase text-zinc-600 mt-2">With great power comes great responsibility.</p>
       </footer>
     </main>
   );

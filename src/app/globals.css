@@ -50,7 +50,8 @@ body {
   }
   .glass-card:hover {
     background-color: rgba(255, 255, 255, 0.04);
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(124, 58, 237, 0.3);
+    box-shadow: 0 8px 32px rgba(124, 58, 237, 0.15);
   }
 
   .glass-nav {
