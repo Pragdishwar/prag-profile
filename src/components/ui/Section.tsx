@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
+import { useScrollReveal } from '@/lib/useScrollReveal';
 
 interface SectionProps {
   children: ReactNode;
@@ -16,20 +17,13 @@ interface SectionProps {
 export default function Section({ children, id, className = '', delay = 0, title, number, subtitle }: SectionProps) {
   // Generate random positions for blobs based on id
   const isEven = id.length % 2 === 0;
+  const ref = useScrollReveal<HTMLElement>();
 
   return (
-    <motion.section
+    <section
       id={id}
-      className={`min-h-screen py-24 px-6 lg:px-12 w-full max-w-7xl mx-auto flex flex-col justify-center relative ${className}`}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ 
-        type: 'spring', 
-        stiffness: 100, 
-        damping: 15,
-        delay: delay
-      }}
+      ref={ref}
+      className={`min-h-screen py-24 px-6 lg:px-12 w-full max-w-7xl mx-auto flex flex-col justify-center relative opacity-0 ${className}`}
     >
       {/* Colorful Animated Background Blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-20">
@@ -96,6 +90,6 @@ export default function Section({ children, id, className = '', delay = 0, title
         </div>
       )}
       {children}
-    </motion.section>
+    </section>
   );
 }
