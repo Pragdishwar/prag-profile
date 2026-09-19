@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { motion, Variants, useMotionValue, useSpring } from 'framer-motion';
 import { useEffect } from 'react';
@@ -79,7 +79,7 @@ export default function Hero() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
             <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm font-medium tracking-wide shadow-[0_0_15px_rgba(255,255,255,0.05)] backdrop-blur-md">
-              Available for new opportunities <span className="opacity-50 mx-1">â€¢</span> <span className="text-primary font-bold">æ–°ã—ã„æ©Ÿä¼šã‚’æ±‚ã‚ã¦</span>
+              Available for new opportunities <span className="opacity-50 mx-1">•</span> <span className="text-primary font-bold">新しい機会を求めて</span>
             </span>
           </motion.div>
           
@@ -92,7 +92,7 @@ export default function Hero() {
           </motion.h2>
           
           <motion.p variants={item} className="text-lg text-zinc-400 max-w-2xl leading-relaxed">
-            Second-year CSE undergraduate based in Chennai, bridging software and hardware to build intelligent systems.
+            Third-year CSE undergraduate based in Chennai, bridging software and hardware to build intelligent systems.
           </motion.p>
 
           <motion.div variants={item} className="flex flex-col md:flex-row gap-4 mt-4 w-full justify-center text-left md:text-center">
