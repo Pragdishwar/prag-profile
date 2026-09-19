@@ -9,7 +9,7 @@ export const personalDetails = {
     twitter: 'https://twitter.com/pragdishwar',
   },
   profilePhoto: 'https://ui-avatars.com/api/?name=Pragdishwar+A&size=200&background=7C3AED&color=fff',
-  bio: "I'm a Full Stack Developer & AI Engineer specialized in building GenAI-driven applications, real-time synchronization systems, and intelligent IoT dashboards. My work focuses on bridging high-fidelity UI/UX with complex backend architectures and AI models.",
+  bio: "Computer Science undergraduate specializing in Artificial Intelligence, Full-Stack Development, and Intelligent Embedded Systems. Experienced in developing AI-powered applications, scalable web platforms, and IoT solutions using Python, React, FastAPI, and modern cloud technologies. Passionate about applied AI research, computer vision, and solving real-world engineering problems through innovative software and hardware solutions.",
   stats: {
     experience: 2,
     projects: 8,
@@ -18,27 +18,41 @@ export const personalDetails = {
 };
 
 export const skills = {
-  Frontend: [
+  Languages: [
+    { name: 'Python', icon: 'python' },
+    { name: 'Java', icon: 'java' },
+    { name: 'C++', icon: 'cpp' },
+    { name: 'JavaScript', icon: 'javascript' },
+    { name: 'TypeScript', icon: 'typescript' }
+  ],
+  "Frameworks & Tech": [
     { name: 'React', icon: 'react' },
     { name: 'Next.js', icon: 'nextjs' },
-    { name: 'TypeScript', icon: 'typescript' },
-    { name: 'Tailwind CSS', icon: 'tailwind' },
-    { name: 'Framer Motion', icon: 'framer' },
-    { name: 'shadcn/ui', icon: 'ui' }
-  ],
-  Backend: [
-    { name: 'Python (FastAPI)', icon: 'python' },
+    { name: 'FastAPI', icon: 'python' },
     { name: 'Node.js', icon: 'nodejs' },
-    { name: 'Supabase', icon: 'supabase' },
-    { name: 'PostgreSQL', icon: 'postgresql' },
-    { name: 'Docker', icon: 'docker' }
+    { name: 'Express.js', icon: 'nodejs' },
+    { name: 'Tailwind CSS', icon: 'tailwind' }
   ],
-  "AI & Tools": [
-    { name: 'Google Gemini', icon: 'ai' },
-    { name: 'Monaco Editor', icon: 'code' },
-    { name: 'TanStack Query', icon: 'query' },
-    { name: 'Vercel', icon: 'vercel' },
-    { name: 'Git', icon: 'git' }
+  "AI & CV": [
+    { name: 'OpenCV', icon: 'opencv' },
+    { name: 'YOLOv8', icon: 'ai' },
+    { name: 'Time-Series Analysis', icon: 'chart' },
+    { name: 'Prompt Engineering', icon: 'ai' },
+    { name: 'LLM Applications', icon: 'ai' }
+  ],
+  Databases: [
+    { name: 'PostgreSQL', icon: 'postgresql' },
+    { name: 'MongoDB', icon: 'mongodb' },
+    { name: 'MySQL', icon: 'mysql' },
+    { name: 'Supabase', icon: 'supabase' }
+  ],
+  "Tools & Concepts": [
+    { name: 'Git & GitHub', icon: 'git' },
+    { name: 'Docker', icon: 'docker' },
+    { name: 'Postman', icon: 'api' },
+    { name: 'Arduino IDE', icon: 'code' },
+    { name: 'REST APIs & OOP', icon: 'code' },
+    { name: 'Embedded Systems & IoT', icon: 'chip' }
   ]
 };
 
@@ -145,6 +159,27 @@ export interface Experience {
 
 export const experience: Experience[] = [
   {
+    id: 'exp-isshoni',
+    company: 'Isshoni Nihongo',
+    role: 'President',
+    duration: 'Mar 2026 - Present',
+    description: [
+      'Lead a multidisciplinary team organizing Japanese language, cultural, and professional development events.',
+      'Coordinate sponsorships, partnerships, logistics, budgeting, and volunteer management.',
+      'Strengthened club growth through strategic planning and cross-cultural engagement.'
+    ]
+  },
+  {
+    id: 'exp-google',
+    company: 'Google Cloud Generative AI Virtual Internship',
+    role: 'Virtual Intern',
+    duration: 'Apr 2025 - Jun 2025',
+    description: [
+      'Built AI applications using Vertex AI while gaining hands-on experience with prompt engineering, LLMs, model deployment, and Generative AI workflows.'
+    ]
+  },
+
+  {
     id: 'exp-1',
     company: 'Lead Developer | Freelance',
     role: 'Full Stack & AI Engineer',
@@ -177,4 +212,37 @@ export const experience: Experience[] = [
       'Integrated real-time data streaming between hardware peripherals and web interfaces.'
     ]
   }
+];
+
+export interface Education {
+  id: string;
+  institution: string;
+  location: string;
+  degree: string;
+  duration: string;
+}
+
+export const education: Education[] = [
+  {
+    id: 'edu-1',
+    institution: 'Chennai Institute of Technology',
+    location: 'Chennai',
+    degree: 'Bachelor of Engineering in Computer Science and Engineering',
+    duration: '2024 - 2028'
+  }
+];
+
+export const certifications = [
+  'Google Cloud Generative AI Virtual Internship',
+  'PCAP: Programming Essentials in Python',
+  'Japanese Language Proficiency Test (JLPT) N4',
+  'Cisco Networking Academy: Introduction to Cybersecurity',
+  'Cisco Networking Academy: Introduction to Modern AI',
+  'AWS Academy: Building with AWS, IoT Foundation, Kinesis Video Streams'
+];
+
+export const languages = [
+  { name: 'English', proficiency: 'Professional Proficiency' },
+  { name: 'Tamil', proficiency: 'Native' },
+  { name: 'Japanese', proficiency: 'JLPT N4' }
 ];
