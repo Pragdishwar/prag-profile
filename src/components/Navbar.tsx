@@ -71,7 +71,7 @@ export default function Navbar() {
                   {activeTab === item.name && (
                     <motion.div
                       layoutId="active-pill"
-                      className="absolute inset-0 bg-white/10 border border-white/20 rounded-full -z-10"
+                      className="absolute inset-0 bg-primary/20 border border-primary/50 rounded-full -z-10 shadow-[0_0_15px_rgba(124,58,237,0.3)]"
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     />
                   )}
@@ -103,5 +103,7 @@ export default function Navbar() {
     </header>
   );
 }
+
+
 
 

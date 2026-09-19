@@ -193,12 +193,22 @@ export default function Projects() {
 
                   <div className="h-px w-full bg-white/10" />
 
-                  <motion.p 
+                  <motion.div 
                     layoutId={`card-desc-${selectedProject.id}`}
-                    className="text-zinc-300 leading-relaxed text-lg"
+                    className="text-zinc-300 leading-relaxed text-lg flex flex-col gap-3"
                   >
-                    {selectedProject.longDescription || selectedProject.description}
-                  </motion.p>
+                    {((selectedProject.longDescription || selectedProject.description) as string).split('\n').map((line, i) => (
+                      <span key={i} className={
+                        line.startsWith('•') 
+                          ? 'block pl-6 relative before:content-["•"] before:absolute before:left-2 before:text-primary mt-1 text-[0.95em]' 
+                          : line.includes('Case Study & Architecture') 
+                            ? 'block text-xl font-bold text-white mt-6 mb-2' 
+                            : 'block'
+                      }>
+                        {line.startsWith('•') ? line.substring(1) : line}
+                      </span>
+                    ))}
+                  </motion.div>
                   
                   <div className="flex gap-4 mt-4">
                     {selectedProject.liveLink && (
