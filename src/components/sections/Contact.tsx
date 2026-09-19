@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
@@ -19,18 +19,40 @@ const item: Variants = {
 };
 
 export default function Contact() {
-  const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission visually since backend isn't hooked up yet
-    alert("Message ready to be sent! (Hook up backend to complete)");
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.target as HTMLFormElement);
+    // 🔑 Replace this with your Web3Forms Access Key
+    formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+      
+      if (response.ok) {
+        setIsSuccess(true);
+        (e.target as HTMLFormElement).reset();
+        setTimeout(() => setIsSuccess(false), 5000);
+      } else {
+        alert("Something went wrong! Please try again.");
+      }
+    } catch (error) {
+      alert("Error submitting form.");
+    }
+    
+    setIsSubmitting(false);
   };
 
   return (
     <Section id="contact" className="min-h-[80vh]" title="Get In Touch" number="06" subtitle="お問い合わせ • Reach Out">
       <div className="flex flex-col gap-12 max-w-5xl mx-auto w-full">
-
         <div className="flex flex-col md:flex-row gap-12 lg:gap-20">
           <motion.div
             variants={container}
@@ -47,14 +69,14 @@ export default function Contact() {
             </motion.div>
 
             <motion.div variants={item} className="flex flex-col gap-4">
-              <motion.a whileHover={{ x: 10 }} href={`mailto:${personalDetails.email}`} className="flex items-center gap-4 text-zinc-300 hover:text-white transition-colors group">
+              <motion.a whileHover={{ x: 10 }} href={"mailto:" + personalDetails.email} className="flex items-center gap-4 text-zinc-300 hover:text-white transition-colors group">
                 <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-orange-500/20 group-hover:border-orange-500/50 transition-colors shadow-[0_0_0_rgba(249,115,22,0)] group-hover:shadow-[0_0_15px_rgba(249,115,22,0.4)]">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 </div>
                 <span className="font-medium">{personalDetails.email}</span>
               </motion.a>
 
-              <motion.a whileHover={{ x: 10 }} href={`tel:${personalDetails.phone}`} className="flex items-center gap-4 text-zinc-300 hover:text-white transition-colors group">
+              <motion.a whileHover={{ x: 10 }} href={"tel:" + personalDetails.phone} className="flex items-center gap-4 text-zinc-300 hover:text-white transition-colors group">
                 <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-pink-500/20 group-hover:border-pink-500/50 transition-colors shadow-[0_0_0_rgba(236,72,153,0)] group-hover:shadow-[0_0_15px_rgba(236,72,153,0.4)]">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 </div>
@@ -90,6 +112,7 @@ export default function Contact() {
                 <label htmlFor="name" className="text-xs font-mono tracking-widest text-zinc-400 uppercase">Your Name</label>
                 <input 
                   type="text" 
+                  name="name" 
                   id="name" 
                   required
                   className="bg-[#111] border border-zinc-700/50 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors w-full"
@@ -101,6 +124,7 @@ export default function Contact() {
                 <label htmlFor="email" className="text-xs font-mono tracking-widest text-zinc-400 uppercase">Your Email</label>
                 <input 
                   type="email" 
+                  name="email" 
                   id="email" 
                   required
                   className="bg-[#111] border border-zinc-700/50 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors w-full"
@@ -112,6 +136,7 @@ export default function Contact() {
                 <label htmlFor="subject" className="text-xs font-mono tracking-widest text-zinc-400 uppercase">Subject</label>
                 <input 
                   type="text" 
+                  name="subject" 
                   id="subject" 
                   required
                   className="bg-[#111] border border-zinc-700/50 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors w-full"
@@ -122,6 +147,7 @@ export default function Contact() {
               <div className="flex flex-col gap-2">
                 <label htmlFor="message" className="text-xs font-mono tracking-widest text-zinc-400 uppercase">Message</label>
                 <textarea 
+                  name="message" 
                   id="message" 
                   required
                   rows={5}
@@ -134,10 +160,16 @@ export default function Contact() {
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
                 type="submit" 
-                className="w-full py-4 rounded-md bg-[#ccff00] text-black font-bold tracking-wider uppercase flex items-center justify-center gap-2 mt-2 hover:bg-[#b3ff00] transition-colors"
+                disabled={isSubmitting || isSuccess}
+                className={"w-full py-4 rounded-md font-bold tracking-wider uppercase flex items-center justify-center gap-2 mt-2 transition-colors " + (isSuccess ? 'bg-green-500 text-white' : 'bg-[#ccff00] text-black hover:bg-[#b3ff00] disabled:opacity-50')}
               >
-                Send Message
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                {isSubmitting ? (
+                  'Sending...'
+                ) : isSuccess ? (
+                  <>Message Sent! <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg></>
+                ) : (
+                  <>Send Message <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></>
+                )}
               </motion.button>
             </form>
           </motion.div>
