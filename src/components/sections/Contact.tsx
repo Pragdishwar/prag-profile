@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
@@ -116,7 +116,7 @@ export default function Contact() {
                   id="name" 
                   required
                   className="bg-[#111] border border-zinc-700/50 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors w-full"
-                  placeholder="John Doe"
+                  placeholder="Gabe itch"
                 />
               </div>
               
@@ -128,7 +128,7 @@ export default function Contact() {
                   id="email" 
                   required
                   className="bg-[#111] border border-zinc-700/50 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors w-full"
-                  placeholder="john@example.com"
+                  placeholder="Gabe@example.com"
                 />
               </div>
 
@@ -140,7 +140,7 @@ export default function Contact() {
                   id="subject" 
                   required
                   className="bg-[#111] border border-zinc-700/50 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors w-full"
-                  placeholder="Project Opportunity / Collaboration"
+                  placeholder="Let's build something amazing together"
                 />
               </div>
 
@@ -152,7 +152,7 @@ export default function Contact() {
                   required
                   rows={5}
                   className="bg-[#111] border border-zinc-700/50 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#ccff00] transition-colors w-full resize-none"
-                  placeholder="Hi Pragdishwar, I saw your portfolio and would love to discuss..."
+                  placeholder="Hey Pragdishwar, I was absolutely blown away by your portfolio! I have an exciting project in mind and I'd love to chat about how we could collaborate to bring it to life..."
                 />
               </div>
 
