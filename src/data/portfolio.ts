@@ -76,7 +76,7 @@ export const projects: Project[] = [
     techStack: ['React', 'Python', 'FastAPI', 'MapLibre GL', 'Zustand', 'Tailwind CSS'],
     githubLink: 'https://github.com/Pragdishwar/ORCA',
     liveLink: '    https://orca-nav.vercel.app/',
-    image: 'https://images.unsplash.com/photo-1590432577610-86b2bbbd3c65?auto=format&fit=crop&q=80&w=800&h=600'
+    image: 'https://api.microlink.io/?url=https%3A%2F%2Forca-nav.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url'
   },
   {
     id: 'equeue',
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     longDescription: 'A modern queue management application built to eliminate physical waiting lines. Customers can join queues remotely, monitor their position in real-time, and check-in via QR code. Includes a comprehensive Admin Management console for branch operators.',
     techStack: ['Flutter', 'Dart', 'Riverpod', 'GoRouter', 'Supabase', 'PostgreSQL'],
     githubLink: 'https://github.com/Pragdishwar/Equeue',
-    image: 'https://images.unsplash.com/photo-1551829026-64c399589d81?auto=format&fit=crop&q=80&w=800&h=600'
+    image: 'https://api.microlink.io/?url=https%3A%2F%2Fgithub.com%2FPragdishwar%2FEqueue&screenshot=true&meta=false&embed=screenshot.url'
   },
   {
     id: 'argus',
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     techStack: ['Next.js', 'Supabase', 'OpenCV', 'YOLO', 'Tesseract', 'Vercel'],
     githubLink: 'https://github.com/Pragdishwar/ARGUS',
     liveLink: 'https://argus-red.vercel.app',
-    image: 'https://images.unsplash.com/photo-1540866225557-9e4c58100c67?auto=format&fit=crop&q=80&w=800&h=600'
+    image: 'https://api.microlink.io/?url=https%3A%2F%2Fargus-red.vercel.app&screenshot=true&meta=false&embed=screenshot.url'
   },
   {
     id: 'anomaly-grammar',
@@ -105,7 +105,7 @@ export const projects: Project[] = [
     techStack: ['React', 'Vite', 'Recharts', 'Python', 'FastAPI'],
     githubLink: 'https://github.com/Pragdishwar/Anomaly-Grammar',
     liveLink: 'https://anomaly-grammar.vercel.app',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=600'
+    image: 'https://api.microlink.io/?url=https%3A%2F%2Fanomaly-grammar.vercel.app&screenshot=true&meta=false&embed=screenshot.url'
   },
   {
     id: 'earn2equity',
@@ -115,7 +115,7 @@ export const projects: Project[] = [
     techStack: ['React', 'Google Gemini', 'Recharts', 'Framer Motion', 'Tailwind CSS'],
     githubLink: 'https://github.com/Pragdishwar/earn2equity',
     liveLink: 'https://earn2equity.vercel.app',
-    image: 'https://images.unsplash.com/photo-1611974717483-5828fb7ea8d6?auto=format&fit=crop&q=80&w=800&h=600'
+    image: 'https://api.microlink.io/?url=https%3A%2F%2Fearn2equity.vercel.app&screenshot=true&meta=false&embed=screenshot.url'
   },
   {
     id: 'routemonk',
@@ -125,7 +125,7 @@ export const projects: Project[] = [
     techStack: ['FastAPI', 'React', 'PostgreSQL', 'TomTom API', 'OpenWeather API', 'Docker'],
     githubLink: 'https://github.com/Pragdishwar/routemonk',
     liveLink: 'https://routemonk-pro.vercel.app',
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800&h=600'
+    image: 'https://api.microlink.io/?url=https%3A%2F%2Froutemonk-pro.vercel.app&screenshot=true&meta=false&embed=screenshot.url'
   },
   {
     id: 'borderland-arena',
@@ -135,7 +135,7 @@ export const projects: Project[] = [
     techStack: ['React', 'Supabase', 'Monaco Editor', 'Tailwind CSS', 'TanStack Query'],
     liveLink: 'https://borderland-arena.vercel.app',
     githubLink: 'https://github.com/Pragdishwar/borderland-arena',
-    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800&h=600'
+    image: 'https://api.microlink.io/?url=https%3A%2F%2Fborderland-arena.vercel.app&screenshot=true&meta=false&embed=screenshot.url'
   },
   {
     id: 'vision-awd',
@@ -145,7 +145,7 @@ export const projects: Project[] = [
     techStack: ['React', 'Vite', 'ESP32-CAM', 'shadcn/ui', 'Tailwind CSS'],
     liveLink: 'https://vision-based-awd.vercel.app',
     githubLink: 'https://github.com/Pragdishwar/Vision-AWD',
-    image: 'https://images.unsplash.com/photo-1563911302283-d2bc129e7570?auto=format&fit=crop&q=80&w=800&h=600'
+    image: 'https://api.microlink.io/?url=https%3A%2F%2Fvision-based-awd.vercel.app&screenshot=true&meta=false&embed=screenshot.url'
   }
 ];
 
