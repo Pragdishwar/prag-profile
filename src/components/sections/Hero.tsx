@@ -67,25 +67,46 @@ export default function Hero() {
           </motion.div>
           
           <motion.h1 variants={item} className="text-5xl md:text-7xl font-bold tracking-tight">
-            Hi, I'm <span className="text-gradient">{personalDetails.name}</span>
+            Hi, I'm <span className="text-gradient">Pragdishwar A</span>
           </motion.h1>
           
           <motion.h2 variants={item} className="text-2xl md:text-3xl text-zinc-300 font-medium tracking-tight">
-            {personalDetails.role.split('').map((char, index) => (
-              <motion.span
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + index * 0.03, duration: 0.2 }}
-              >
-                {char}
-              </motion.span>
-            ))}
+            Full-Stack Developer & IoT Engineer.
           </motion.h2>
           
           <motion.p variants={item} className="text-lg text-zinc-400 max-w-2xl leading-relaxed">
-            {personalDetails.bio} Based in {personalDetails.location}.
+            Second-year CSE undergraduate based in Chennai, bridging software and hardware to build intelligent systems.
           </motion.p>
+
+          <motion.div variants={item} className="flex flex-col md:flex-row gap-4 mt-4 w-full justify-center text-left md:text-center">
+            <div className="flex flex-col items-center md:items-center text-center gap-3 p-5 glass-card rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-colors flex-1 shadow-lg shadow-black/20">
+              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shadow-[0_0_15px_rgba(124,58,237,0.3)]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              </div>
+              <div>
+                <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-1">Web Platforms</h3>
+                <p className="text-xs text-zinc-400">React, TypeScript, modern cloud architecture.</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center md:items-center text-center gap-3 p-5 glass-card rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-colors flex-1 shadow-lg shadow-black/20">
+              <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+              </div>
+              <div>
+                <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-1">Embedded IoT</h3>
+                <p className="text-xs text-zinc-400">ESP32, Python, sensor integration.</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center md:items-center text-center gap-3 p-5 glass-card rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-colors flex-1 shadow-lg shadow-black/20">
+              <div className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" /></svg>
+              </div>
+              <div>
+                <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-1">Applied AI</h3>
+                <p className="text-xs text-zinc-400">FastAPI, computer vision, data pipelines.</p>
+              </div>
+            </div>
+          </motion.div>
           
           <motion.div variants={item} className="flex flex-wrap items-center justify-center gap-4 mt-8">
             <a
