@@ -19,7 +19,7 @@ export default function ProfileExtras() {
   }, []);
 
   return (
-    <Section id="profile-extras" className="pt-10 pb-20">
+    <Section id="profile-extras" className="pt-10 pb-20" title="Background" number="05">
       <div className="flex flex-col gap-16 max-w-5xl mx-auto w-full">
         
         {/* Education & Languages Row */}
@@ -33,8 +33,7 @@ export default function ProfileExtras() {
             className="flex flex-col gap-6"
           >
             <div>
-              <h2 className="text-white text-3xl font-bold tracking-tight mb-2">Education</h2>
-              <div className="h-1 w-16 bg-primary rounded-full" />
+              <h3 className="text-white text-2xl font-bold tracking-tight mb-2">Education</h3>
             </div>
             <div className="flex flex-col gap-4">
               {education.map((edu, idx) => (
@@ -59,8 +58,7 @@ export default function ProfileExtras() {
             className="flex flex-col gap-6"
           >
             <div>
-              <h2 className="text-white text-3xl font-bold tracking-tight mb-2">Languages</h2>
-              <div className="h-1 w-16 bg-primary rounded-full" />
+              <h3 className="text-white text-2xl font-bold tracking-tight mb-2">Languages</h3>
             </div>
             <div className="glass-card p-8 rounded-xl border border-white/10 flex flex-col gap-8 h-full justify-center">
               {languages.map((lang, idx) => (
@@ -95,9 +93,8 @@ export default function ProfileExtras() {
           viewport={{ once: true, amount: 0.1 }}
           className="flex flex-col gap-8 w-full mt-8"
         >
-          <div className="text-center flex flex-col items-center">
-            <h2 className="text-white text-3xl font-bold tracking-tight mb-2">Licenses & Certifications</h2>
-            <div className="h-1 w-24 bg-primary rounded-full mb-6" />
+          <div className="flex flex-col items-start md:items-end w-full">
+            <h3 className="text-white text-2xl font-bold tracking-tight mb-2">Licenses & Certifications</h3>
           </div>
 
           <div className="relative w-full max-w-4xl mx-auto">

@@ -20,9 +20,9 @@ export default function Home() {
       <Contact />
       
       {/* Footer */}
-      <footer className="text-center py-8 text-zinc-500 text-sm border-t border-white/5">
-        <p>© {new Date().getFullYear()} Pragdishwar A. All rights reserved.</p>
-        <p className="mt-1">Built with Next.js, Tailwind CSS, and Framer Motion.</p>
+      <footer className="text-center py-16 text-zinc-500 text-sm border-t border-white/5 flex flex-col items-center justify-center gap-2">
+        <p>© {new Date().getFullYear()} Pragdishwar A.</p>
+        <p className="font-mono text-xs tracking-widest uppercase text-zinc-600 mt-2">Built with intent.</p>
       </footer>
     </main>
   );

@@ -29,18 +29,8 @@ const IconPlaceholder = () => (
 
 export default function Skills() {
   return (
-    <Section id="skills">
+    <Section id="skills" title="Skills" number="02">
       <div className="flex flex-col gap-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center"
-        >
-          <h2 className="text-white text-3xl md:text-4xl font-bold tracking-tight mb-4">Technical Skills</h2>
-          <div className="h-1 w-20 bg-primary rounded-full mx-auto" />
-        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {(Object.keys(skills) as Array<keyof typeof skills>).map((category, idx) => (

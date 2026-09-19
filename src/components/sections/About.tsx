@@ -21,7 +21,7 @@ const item: Variants = {
 
 export default function About() {
   return (
-    <Section id="about">
+    <Section id="about" title="About" number="01">
       <motion.div
         variants={container}
         initial="hidden"
@@ -30,7 +30,7 @@ export default function About() {
         className="flex flex-col md:flex-row gap-12 items-center"
       >
         <motion.div variants={item} className="w-full md:w-1/3 flex justify-center">
-          <div className="relative w-64 h-64 rounded-2xl overflow-hidden glass-card p-2 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+          <div className="relative w-72 h-72 rounded-2xl overflow-hidden glass-card p-2 transform rotate-2 hover:rotate-0 transition-transform duration-300">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
               src={personalDetails.profilePhoto} 
@@ -42,11 +42,6 @@ export default function About() {
         </motion.div>
 
         <div className="w-full md:w-2/3 flex flex-col gap-6">
-          <motion.div variants={item}>
-            <h2 className="text-white text-3xl md:text-4xl font-bold tracking-tight mb-2">About Me</h2>
-            <div className="h-1 w-20 bg-primary rounded-full" />
-          </motion.div>
-
           <motion.p variants={item} className="text-zinc-400 text-lg leading-relaxed">
             {personalDetails.bio}
           </motion.p>
@@ -55,18 +50,18 @@ export default function About() {
             When I'm not writing code, I'm usually exploring new technologies, contributing to open-source, or reading about the latest in software architecture. My approach is simple: build things that matter, and build them well.
           </motion.p>
 
-          <motion.div variants={item} className="grid grid-cols-3 gap-4 mt-4">
-            <div className="glass-card p-4 rounded-xl text-center">
-              <h3 className="text-3xl font-bold text-white mb-1">{personalDetails.stats.experience}+</h3>
-              <p className="text-sm text-zinc-500 font-medium">Years Exp</p>
+          <motion.div variants={item} className="grid grid-cols-3 gap-4 mt-6">
+            <div className="glass-card p-6 rounded-xl text-center hover:-translate-y-1 transition-transform duration-300">
+              <h3 className="text-4xl font-bold text-white mb-2">{personalDetails.stats.experience}+</h3>
+              <p className="text-sm text-zinc-500 font-medium tracking-wide uppercase">Years Exp</p>
             </div>
-            <div className="glass-card p-4 rounded-xl text-center">
-              <h3 className="text-3xl font-bold text-white mb-1">{personalDetails.stats.projects}+</h3>
-              <p className="text-sm text-zinc-500 font-medium">Projects</p>
+            <div className="glass-card p-6 rounded-xl text-center hover:-translate-y-1 transition-transform duration-300">
+              <h3 className="text-4xl font-bold text-white mb-2">{personalDetails.stats.projects}+</h3>
+              <p className="text-sm text-zinc-500 font-medium tracking-wide uppercase">Projects</p>
             </div>
-            <div className="glass-card p-4 rounded-xl text-center">
-              <h3 className="text-3xl font-bold text-white mb-1">{personalDetails.stats.technologies}+</h3>
-              <p className="text-sm text-zinc-500 font-medium">Technologies</p>
+            <div className="glass-card p-6 rounded-xl text-center hover:-translate-y-1 transition-transform duration-300">
+              <h3 className="text-4xl font-bold text-white mb-2">{personalDetails.stats.technologies}+</h3>
+              <p className="text-sm text-zinc-500 font-medium tracking-wide uppercase">Tech</p>
             </div>
           </motion.div>
         </div>

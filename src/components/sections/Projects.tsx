@@ -89,18 +89,15 @@ export default function Projects() {
   const filteredProjects = projects.filter(p => filter === 'All' || getCategory(p.techStack) === filter);
 
   return (
-    <Section id="projects">
+    <Section id="projects" title="Featured Projects" number="03">
       <div className="flex flex-col gap-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center"
+          className="flex flex-col items-start md:items-end w-full"
         >
-          <h2 className="text-white text-3xl md:text-4xl font-bold tracking-tight mb-4">Featured Projects</h2>
-          <div className="h-1 w-20 bg-primary rounded-full mx-auto mb-8" />
-          
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap gap-3">
             {categories.map(cat => (
               <button
                 key={cat}
