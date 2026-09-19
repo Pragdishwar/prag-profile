@@ -56,7 +56,7 @@ export default function ProjectsGrid({ lang }: { lang: Lang }) {
               <p className="text-xs font-medium text-foreground tracking-widest uppercase mb-3">Key Architecture Highlights</p>
               <div className="space-y-2">
                 {p.safetyLayers.map(l => (
-                  <div key={l.label} className="flex justify-between items-center pt-2 pb-2 pl-3 pr-3 rounded-md bg-secondary/50 border border-border">
+                  <div key={l.label} className="flex justify-between items-center py-2 px-3 rounded-md bg-secondary/50 border border-border">
                     <span className="text-xs font-medium text-muted-foreground">
                       {l.label}
                     </span>
@@ -86,7 +86,7 @@ export default function ProjectsGrid({ lang }: { lang: Lang }) {
               return (
                 <span
                   key={tech}
-                  className="pl-2 pr-2.5 pt-1 pb-1 text-xs font-medium rounded-md bg-secondary text-secondary-foreground border border-border"
+                  className="px-2.5 py-1 text-xs font-medium rounded-md bg-secondary text-secondary-foreground border border-border"
                 >
                   {tech}
                 </span>
@@ -122,7 +122,7 @@ function StatusPill({ status, color }: { status: string; color: 'green' | 'amber
     : { bg: 'bg-amber-500/10', border: 'border-amber-500/20', text: 'text-amber-600 dark:text-amber-400', indicator: 'bg-amber-500' };
   
   return (
-    <div className={`flex items-center gap-2 pl-2 pr-2.5 pt-1 pb-1 rounded-full ${c.bg} border ${c.border}`}>
+    <div className={`flex items-center gap-2 px-2.5 py-1 rounded-full ${c.bg} border ${c.border}`}>
       <div className={`w-1.5 h-1.5 rounded-full ${c.indicator} ${color === 'amber' ? 'animate-pulse' : ''}`} />
       <span className={`text-[10px] font-semibold uppercase tracking-wider ${c.text}`}>{status}</span>
     </div>

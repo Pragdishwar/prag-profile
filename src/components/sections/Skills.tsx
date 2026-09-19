@@ -39,7 +39,7 @@ export default function Skills() {
           className="text-center"
         >
           <h2 className="text-white text-3xl md:text-4xl font-bold tracking-tight mb-4">Technical Skills</h2>
-          <div className="h-1 w-20 bg-primary rounded-full ml-auto mr-auto" />
+          <div className="h-1 w-20 bg-primary rounded-full mx-auto" />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

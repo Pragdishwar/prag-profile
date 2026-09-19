@@ -98,14 +98,14 @@ export default function Projects() {
           className="text-center"
         >
           <h2 className="text-white text-3xl md:text-4xl font-bold tracking-tight mb-4">Featured Projects</h2>
-          <div className="h-1 w-20 bg-primary rounded-full ml-auto mr-auto mb-8" />
+          <div className="h-1 w-20 bg-primary rounded-full mx-auto mb-8" />
           
           <div className="flex flex-wrap justify-center gap-3">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`pl-4 pr-4 pt-2 pb-2 rounded-full text-sm font-medium transition-all ${filter === cat ? 'bg-primary text-white shadow-[0_0_15px_rgba(124,58,237,0.4)]' : 'bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white border border-white/5'}`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filter === cat ? 'bg-primary text-white shadow-[0_0_15px_rgba(124,58,237,0.4)]' : 'bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white border border-white/5'}`}
               >
                 {cat}
               </button>
@@ -160,12 +160,12 @@ export default function Projects() {
                     
                     <motion.div layoutId={`card-tags-${project.id}`} className="flex flex-wrap gap-2 mt-auto">
                       {project.techStack.slice(0, 3).map(tech => (
-                        <span key={tech} className="pl-2 pr-2 pt-1 pb-1 text-xs font-medium bg-white/5 border border-white/10 rounded-md text-zinc-300">
+                        <span key={tech} className="px-2 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-md text-zinc-300">
                           {tech}
                         </span>
                       ))}
                       {project.techStack.length > 3 && (
-                        <span className="pl-2 pr-2 pt-1 pb-1 text-xs font-medium bg-white/5 border border-white/10 rounded-md text-zinc-300">
+                        <span className="px-2 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-md text-zinc-300">
                           +{project.techStack.length - 3}
                         </span>
                       )}
@@ -218,7 +218,7 @@ export default function Projects() {
                     </motion.h3>
                     <motion.div layoutId={`card-tags-${selectedProject.id}`} className="flex flex-wrap gap-2 mt-4">
                       {selectedProject.techStack.map(tech => (
-                        <span key={tech} className="pl-3 pr-3 pt-1 pb-1 text-sm font-medium bg-primary/20 text-primary border border-primary/30 rounded-md">
+                        <span key={tech} className="px-3 py-1 text-sm font-medium bg-primary/20 text-primary border border-primary/30 rounded-md">
                           {tech}
                         </span>
                       ))}
@@ -240,7 +240,7 @@ export default function Projects() {
                         href={selectedProject.liveLink} 
                         target="_blank" 
                         rel="noreferrer"
-                        className="pl-6 pr-6 pt-3 pb-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors flex items-center gap-2"
+                        className="px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors flex items-center gap-2"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
                         Live Demo
@@ -251,7 +251,7 @@ export default function Projects() {
                         href={selectedProject.githubLink} 
                         target="_blank" 
                         rel="noreferrer"
-                        className="pl-6 pr-6 pt-3 pb-3 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-colors flex items-center gap-2"
+                        className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-colors flex items-center gap-2"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
                         GitHub

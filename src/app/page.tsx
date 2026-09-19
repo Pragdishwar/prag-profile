@@ -20,7 +20,7 @@ export default function Home() {
       <Contact />
       
       {/* Footer */}
-      <footer className="text-center pt-8 pb-8 text-zinc-500 text-sm border-t border-white/5">
+      <footer className="text-center py-8 text-zinc-500 text-sm border-t border-white/5">
         <p>© {new Date().getFullYear()} Pragdishwar A. All rights reserved.</p>
         <p className="mt-1">Built with Next.js, Tailwind CSS, and Framer Motion.</p>
       </footer>

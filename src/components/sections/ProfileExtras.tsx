@@ -20,7 +20,7 @@ export default function ProfileExtras() {
 
   return (
     <Section id="profile-extras" className="pt-10 pb-20">
-      <div className="flex flex-col gap-16 max-w-5xl ml-auto mr-auto w-full">
+      <div className="flex flex-col gap-16 max-w-5xl mx-auto w-full">
         
         {/* Education & Languages Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -44,7 +44,7 @@ export default function ProfileExtras() {
                   <h4 className="text-primary font-medium">{edu.institution}</h4>
                   <div className="flex justify-between items-center mt-4 text-sm text-zinc-400">
                     <span>{edu.location}</span>
-                    <span className="pl-3 pr-3 pt-1 pb-1 bg-white/5 rounded-full border border-white/5">{edu.duration}</span>
+                    <span className="px-3 py-1 bg-white/5 rounded-full border border-white/5">{edu.duration}</span>
                   </div>
                 </div>
               ))}
@@ -100,7 +100,7 @@ export default function ProfileExtras() {
             <div className="h-1 w-24 bg-primary rounded-full mb-6" />
           </div>
 
-          <div className="relative w-full max-w-4xl ml-auto mr-auto">
+          <div className="relative w-full max-w-4xl mx-auto">
             {/* Carousel Container */}
             <div className="overflow-hidden relative h-[220px] rounded-2xl glass-card border border-white/10 flex items-center justify-center p-8 shadow-2xl">
               
@@ -114,9 +114,9 @@ export default function ProfileExtras() {
                   animate={{ opacity: 1, scale: 1, x: 0 }}
                   exit={{ opacity: 0, scale: 0.9, x: -50 }}
                   transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-                  className="text-center z-10 w-full pl-12 pr-12"
+                  className="text-center z-10 w-full px-12"
                 >
-                  <div className="w-16 h-16 ml-auto mr-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center text-primary shadow-[0_0_20px_rgba(124,58,237,0.3)]">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center text-primary shadow-[0_0_20px_rgba(124,58,237,0.3)]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 15v5s3-1.5 5-5c0-3.5-5-5-5-5s-5 1.5-5 5c0 3.5 3 5 5 5z"/><path d="M12 15V8"/><circle cx="12" cy="5" r="3"/></svg>
                   </div>
                   <h3 className="text-xl md:text-2xl font-bold text-white leading-tight">{certifications[certIndex]}</h3>

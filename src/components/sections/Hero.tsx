@@ -55,7 +55,7 @@ export default function Hero() {
         className="max-w-3xl flex flex-col items-center gap-6 relative z-10"
       >
         <motion.div variants={item} className="inline-block">
-          <span className="pl-3 pr-3 pt-1 pb-1 rounded-full border border-white/10 bg-white/5 text-sm font-medium tracking-wide shadow-[0_0_15px_rgba(255,255,255,0.05)] backdrop-blur-md">
+          <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm font-medium tracking-wide shadow-[0_0_15px_rgba(255,255,255,0.05)] backdrop-blur-md">
             Available for new opportunities
           </span>
         </motion.div>
@@ -84,13 +84,13 @@ export default function Hero() {
         <motion.div variants={item} className="flex flex-wrap items-center justify-center gap-4 mt-4">
           <a
             href="#projects"
-            className="pl-6 pr-6 pt-3 pb-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all hover:scale-105 shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)]"
+            className="px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all hover:scale-105 shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)]"
           >
             View Projects
           </a>
           <a
             href="#contact"
-            className="pl-6 pr-6 pt-3 pb-3 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-all hover:scale-105"
+            className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-all hover:scale-105"
           >
             Contact Me
           </a>

@@ -101,7 +101,7 @@ function SkillColumn({ title, skills: list, direction, colorClass }: SkillColPro
 function BridgeNode({ protocol, delay }: { protocol: string; delay: number }) {
   return (
     <motion.div
-      className="pl-3 pr-3 pt-1 pb-1.5 rounded-full text-[10px] font-bold text-muted-foreground bg-secondary border border-border tracking-wider z-10"
+      className="px-3 py-1.5 rounded-full text-[10px] font-bold text-muted-foreground bg-secondary border border-border tracking-wider z-10"
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}

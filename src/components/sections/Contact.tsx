@@ -29,7 +29,7 @@ export default function Contact() {
 
   return (
     <Section id="contact" className="min-h-[80vh]">
-      <div className="flex flex-col gap-12 max-w-5xl ml-auto mr-auto w-full">
+      <div className="flex flex-col gap-12 max-w-5xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,7 +37,7 @@ export default function Contact() {
           className="text-center"
         >
           <h2 className="text-white text-3xl md:text-4xl font-bold tracking-tight mb-4">Get In Touch</h2>
-          <div className="h-1 w-20 bg-primary rounded-full ml-auto mr-auto" />
+          <div className="h-1 w-20 bg-primary rounded-full mx-auto" />
         </motion.div>
 
         <div className="flex flex-col md:flex-row gap-12 lg:gap-20">
@@ -96,7 +96,7 @@ export default function Contact() {
                     required
                     onFocus={() => setFocusedField('name')}
                     onBlur={() => setFocusedField(null)}
-                    className="bg-zinc-900/50 border border-white/10 rounded-lg pl-4 pr-4 pt-3 pb-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 w-full"
+                    className="bg-zinc-900/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 w-full"
                     placeholder="John Doe"
                   />
                   {focusedField === 'name' && (
@@ -112,7 +112,7 @@ export default function Contact() {
                     required
                     onFocus={() => setFocusedField('email')}
                     onBlur={() => setFocusedField(null)}
-                    className="bg-zinc-900/50 border border-white/10 rounded-lg pl-4 pr-4 pt-3 pb-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 w-full"
+                    className="bg-zinc-900/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 w-full"
                     placeholder="john@example.com"
                   />
                   {focusedField === 'email' && (
@@ -129,7 +129,7 @@ export default function Contact() {
                   rows={5}
                   onFocus={() => setFocusedField('message')}
                   onBlur={() => setFocusedField(null)}
-                  className="bg-zinc-900/50 border border-white/10 rounded-lg pl-4 pr-4 pt-3 pb-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 w-full resize-none"
+                  className="bg-zinc-900/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 w-full resize-none"
                   placeholder="Tell me about your project..."
                 />
                 {focusedField === 'message' && (
@@ -141,7 +141,7 @@ export default function Contact() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit" 
-                className="w-full pt-4 pb-4 rounded-lg bg-primary text-white font-bold tracking-wide hover:bg-primary/90 transition-colors shadow-[0_0_20px_rgba(124,58,237,0.2)] mt-2"
+                className="w-full py-4 rounded-lg bg-primary text-white font-bold tracking-wide hover:bg-primary/90 transition-colors shadow-[0_0_20px_rgba(124,58,237,0.2)] mt-2"
               >
                 Send Message
               </motion.button>
