@@ -152,5 +152,5 @@ export const cliCommands: Record<string, { desc: string; descJP: string }> = {
   'lang jp':      { desc: 'Switch UI to Japanese', descJP: 'UIを日本語に切替' },
   'lang en':      { desc: 'Switch UI to English', descJP: 'UIを英語に切替' },
   clear:          { desc: 'Clear terminal output', descJP: 'ターミナル出力をクリア' },
-  matrix:         { desc: '??? Easter egg', descJP: '??? イースターエッグ' },
+  spiderman:      { desc: '??? Easter egg', descJP: '??? イースターエッグ' },
 };

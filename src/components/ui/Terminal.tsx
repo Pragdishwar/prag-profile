@@ -13,8 +13,16 @@ export default function Terminal() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<CommandHistory[]>([]);
+  const [showSpiderman, setShowSpiderman] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (showSpiderman) {
+      const timer = setTimeout(() => setShowSpiderman(false), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [showSpiderman]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -87,6 +95,47 @@ export default function Terminal() {
           </div>
         </div>
       );
+    } else if (cmd === 'skills sw') {
+      output = (
+        <div className="grid grid-cols-2 gap-x-4">
+          {skills.software.map(s => <div key={s.name}>{s.icon} {s.name} ({s.level}%)</div>)}
+        </div>
+      );
+    } else if (cmd === 'skills hw') {
+      output = (
+        <div className="grid grid-cols-2 gap-x-4">
+          {skills.hardware.map(s => <div key={s.name}>{s.icon} {s.name} ({s.level}%)</div>)}
+        </div>
+      );
+    } else if (cmd === 'projects') {
+      output = (
+        <div className="space-y-2">
+          <p className="text-primary font-bold">PROJECTS</p>
+          {cliCommands['projects'] ? (
+            <ul className="list-disc pl-4">
+              <li>Earn2Equity - FINANCIAL · PLATFORM</li>
+              <li>ESP32-CAM Irrigation - EMBEDDED · IoT · VISION</li>
+            </ul>
+          ) : null}
+        </div>
+      );
+    } else if (cmd === 'stats') {
+      output = (
+        <div className="space-y-1">
+          <p><span className="text-zinc-500">Projects:</span> 12+</p>
+          <p><span className="text-zinc-500">System Uptime:</span> 99.7%</p>
+          <p><span className="text-zinc-500">Commits:</span> 847</p>
+          <p><span className="text-zinc-500">JP Level:</span> N4</p>
+        </div>
+      );
+    } else if (cmd === 'lang jp') {
+      output = <span className="text-green-400">システム言語を日本語に切り替えました。 (Simulated)</span>;
+    } else if (cmd === 'lang en') {
+      output = <span className="text-green-400">System language switched to English. (Simulated)</span>;
+    } else if (cmd === 'spiderman') {
+      output = <span className="text-red-500 font-mono">With great power comes great responsibility...</span>;
+      setShowSpiderman(true);
+      setIsOpen(false); // Close terminal to show full screen effect
     } else if (cmd === 'matrix') {
       output = <span className="text-green-500 font-mono">Wake up, Neo... The Matrix has you.</span>;
     } else {
@@ -171,6 +220,34 @@ export default function Terminal() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Full Screen Spiderman Easter Egg */}
+      {showSpiderman && (
+        <div className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden flex items-center justify-center bg-red-900/20 backdrop-blur-sm">
+          <motion.div 
+            initial={{ scale: 0, opacity: 0, rotate: -180 }}
+            animate={{ scale: [0, 1.2, 1], opacity: [0, 1, 0], rotate: 0 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+            className="absolute"
+          >
+            <svg width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="opacity-50">
+              <path d="M12 2L12 22M2 12L22 12M5 5L19 19M5 19L19 5M12 2A10 10 0 0 0 2 12M12 2A10 10 0 0 1 22 12M12 22A10 10 0 0 1 2 12M12 22A10 10 0 0 0 22 12" />
+              <path d="M12 6A6 6 0 0 0 6 12M12 6A6 6 0 0 1 18 12M12 18A6 6 0 0 1 6 12M12 18A6 6 0 0 0 18 12" />
+            </svg>
+          </motion.div>
+          
+          {/* Spiderman dropping */}
+          <motion.div
+            initial={{ y: -500 }}
+            animate={{ y: [ -500, 50, 20, 50, -500 ] }}
+            transition={{ duration: 4, times: [0, 0.2, 0.4, 0.8, 1] }}
+            className="absolute top-0 right-1/4 flex flex-col items-center drop-shadow-[0_0_20px_rgba(239,68,68,0.8)]"
+          >
+            <div className="w-1 h-32 bg-white/80 shadow-[0_0_10px_white]" />
+            <div className="text-[6rem]">🕷️</div>
+          </motion.div>
+        </div>
+      )}
     </>
   );
 }
