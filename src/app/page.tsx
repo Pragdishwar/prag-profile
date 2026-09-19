@@ -7,10 +7,12 @@ import Projects from '@/components/sections/Projects';
 import Experience from '@/components/sections/Experience';
 import ProfileExtras from '@/components/sections/ProfileExtras';
 import Contact from '@/components/sections/Contact';
+import SakuraFall from '@/components/ui/SakuraFall';
 
 export default function Home() {
   return (
     <main className="flex flex-col min-h-screen">
+      <SakuraFall />
       <Hero />
       <About />
       <Skills />
