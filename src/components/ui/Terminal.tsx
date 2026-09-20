@@ -221,11 +221,12 @@ YJGS8P"Y888P"Y888P"Y888P"Y8888P
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="fixed bottom-6 right-6 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-xs font-mono text-zinc-400 z-50 backdrop-blur-md hidden md:flex items-center gap-2 cursor-pointer hover:bg-primary/20 hover:border-primary/50 hover:text-white hover:shadow-[0_0_15px_rgba(124,58,237,0.3)] transition-all"
+          className="fixed bottom-6 right-6 bg-white/5 border border-white/10 p-3 md:px-4 md:py-2 rounded-full text-xs font-mono text-zinc-400 z-50 backdrop-blur-md flex items-center gap-2 cursor-pointer hover:bg-primary/20 hover:border-primary/50 hover:text-white hover:shadow-[0_0_15px_rgba(124,58,237,0.3)] transition-all"
           onClick={() => setIsOpen(true)}
+          title="Open Terminal"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
-          Press [ T ] for Terminal
+          <span className="hidden md:inline">Press [ T ] for Terminal</span>
         </motion.div>
       )}
 
