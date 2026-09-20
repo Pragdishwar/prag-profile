@@ -33,6 +33,9 @@ export const metadata: Metadata = {
     images: ['https://api.microlink.io/?url=https%3A%2F%2Fpragdishwar.vercel.app&screenshot=true&meta=false&embed=screenshot.url'],
   },
   manifest: '/manifest.json',
+};
+
+export const viewport = {
   themeColor: '#09090b',
 };
 
