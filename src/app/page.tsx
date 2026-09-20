@@ -27,6 +27,7 @@ export default function Home() {
   const [cursorEnabled, setCursorEnabled] = useState(false);
   const [matrixEnabled, setMatrixEnabled] = useState(false);
   const [domainExpanded, setDomainExpanded] = useState(false);
+  const [siuTriggered, setSiuTriggered] = useState(false);
   const [otakuMode, setOtakuMode] = useState(false);
   const [quoteIndex, setQuoteIndex] = useState(0);
 
@@ -37,24 +38,33 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  // Bankai and Konami Easter Egg Listener
+  // Bankai, SIU and Konami Easter Egg Listener
   useEffect(() => {
     const bankaiCode = "bankai";
+    const siuCode = "siu";
     const konamiCode = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown"];
     
     let inputStr = "";
     let konamiInput: string[] = [];
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Bankai
+      // Bankai and SIU string tracking
       inputStr += e.key.toLowerCase();
-      if (inputStr.length > bankaiCode.length) {
-        inputStr = inputStr.substring(inputStr.length - bankaiCode.length);
+      if (inputStr.length > Math.max(bankaiCode.length, siuCode.length)) {
+        inputStr = inputStr.substring(inputStr.length - Math.max(bankaiCode.length, siuCode.length));
       }
-      if (inputStr === bankaiCode) {
+      
+      if (inputStr.endsWith(bankaiCode)) {
         setOtakuMode(prev => !prev);
         const audio = new Audio('https://www.myinstants.com/media/sounds/bleach-bankai_2.mp3');
         audio.play().catch(() => {});
+      }
+
+      if (inputStr.endsWith(siuCode)) {
+        setSiuTriggered(true);
+        const audio = new Audio('https://www.myinstants.com/media/sounds/suu.mp3');
+        audio.play().catch(() => {});
+        setTimeout(() => setSiuTriggered(false), 2000);
       }
 
       // Konami (Domain Expansion)
@@ -105,6 +115,22 @@ export default function Home() {
       {summonEnabled && <SummonJutsu />}
       {matrixEnabled && <MatrixRain />}
       {domainExpanded && <DomainExpansion onComplete={() => setDomainExpanded(false)} />}
+      
+      <AnimatePresence>
+        {siuTriggered && (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.5, y: 100 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 2, filter: 'blur(10px)' }}
+            transition={{ type: 'spring', damping: 10 }}
+            className="fixed inset-0 z-[9999] pointer-events-none flex items-center justify-center"
+          >
+            <h1 className="text-[15vw] font-black text-white italic drop-shadow-[0_0_30px_rgba(255,255,255,0.8)] tracking-tighter mix-blend-difference">
+              SIUUUU!
+            </h1>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <main className={`flex flex-col min-h-screen ${otakuMode ? 'hue-rotate-90 saturate-200 transition-all duration-1000' : 'transition-all duration-1000'}`}>
         <Hero />
