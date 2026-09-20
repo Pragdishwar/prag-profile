@@ -54,38 +54,32 @@ export default function Home() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  const handleTerminalCommand = (cmd: string) => {
+    switch (cmd) {
+      case 'sakura':
+        setSakuraEnabled(prev => !prev);
+        break;
+      case 'summon':
+        setSummonEnabled(prev => !prev);
+        break;
+      case 'cursor':
+        setCursorEnabled(prev => !prev);
+        break;
+      case 'bankai':
+        setOtakuMode(prev => !prev);
+        const audio = new Audio('https://www.myinstants.com/media/sounds/bleach-bankai_2.mp3');
+        audio.play().catch(() => {});
+        break;
+    }
+  };
+
   return (
     <>
       {cursorEnabled && <AnimeCursor />}
       {sakuraEnabled && <SakuraFall />}
       {summonEnabled && <SummonJutsu />}
       
-      {/* Floating Buttons */}
-      <div className="fixed bottom-6 left-6 flex flex-col gap-4 z-50">
-        <button 
-          onClick={() => setCursorEnabled(!cursorEnabled)}
-          className="bg-white/5 border border-white/10 p-3 rounded-full text-zinc-400 backdrop-blur-md hover:bg-purple-500/20 hover:border-purple-500/50 hover:text-white hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all flex items-center justify-center group outline-none"
-          title="Toggle Custom Cursor"
-        >
-          <span className={`text-xl transition-transform ${cursorEnabled ? 'scale-110' : 'scale-90 opacity-50 grayscale'}`}>🗡️</span>
-        </button>
-
-        <button 
-          onClick={() => setSakuraEnabled(!sakuraEnabled)}
-          className="bg-white/5 border border-white/10 p-3 rounded-full text-zinc-400 backdrop-blur-md hover:bg-pink-500/20 hover:border-pink-500/50 hover:text-white hover:shadow-[0_0_15px_rgba(236,72,153,0.3)] transition-all flex items-center justify-center group outline-none"
-          title="Toggle Sakura Fall"
-        >
-          <span className={`text-xl transition-transform ${sakuraEnabled ? 'scale-110' : 'scale-90 opacity-50 grayscale'}`}>🌸</span>
-        </button>
-
-        <button 
-          onClick={() => setSummonEnabled(!summonEnabled)}
-          className="bg-white/5 border border-white/10 p-3 rounded-full text-zinc-400 backdrop-blur-md hover:bg-orange-500/20 hover:border-orange-500/50 hover:text-white hover:shadow-[0_0_15px_rgba(249,115,22,0.3)] transition-all flex items-center justify-center group outline-none"
-          title="Summoning Jutsu"
-        >
-          <span className={`text-xl transition-transform ${summonEnabled ? 'scale-110' : 'scale-90 opacity-50 grayscale'}`}>📜</span>
-        </button>
-      </div>
+      <InteractiveTerminal onCommand={handleTerminalCommand} />
 
       <main className={`flex flex-col min-h-screen ${otakuMode ? 'hue-rotate-90 saturate-200 transition-all duration-1000' : 'transition-all duration-1000'}`}>
         <Hero />
