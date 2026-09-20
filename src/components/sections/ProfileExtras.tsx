@@ -1,10 +1,62 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import Section from '../ui/Section';
-import { education, certifications, languages } from '../../data/portfolio';
+import { education, certifications, languages, interests } from '../../data/portfolio';
 import { GitHubCalendar } from 'react-github-calendar';
+
+function AnimeCard({ interest }: { interest: any }) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const rotateX = useTransform(y, [-150, 150], [15, -15]);
+  const rotateY = useTransform(x, [-150, 150], [-15, 15]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    x.set(e.clientX - centerX);
+    y.set(e.clientY - centerY);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  const playSound = () => {
+    if (interest.audio) {
+      const audio = new Audio(interest.audio);
+      audio.volume = 0.4;
+      audio.play().catch(e => console.log('Audio play failed:', e));
+    }
+  };
+
+  return (
+    <motion.div 
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onMouseEnter={playSound}
+      className="glass-card rounded-xl border border-white/10 hover:border-primary/50 transition-colors duration-300 overflow-hidden group flex flex-col bg-white/5 relative"
+    >
+      <div style={{ transform: "translateZ(30px)" }} className="h-40 w-full overflow-hidden relative pointer-events-none">
+        <img src={interest.image} alt={interest.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+        <div className="absolute top-2 right-2 px-2 py-1 bg-black/60 backdrop-blur-md rounded-md text-xs font-bold text-primary uppercase border border-white/10">
+          {interest.type}
+        </div>
+      </div>
+      <div style={{ transform: "translateZ(20px)" }} className="p-5 flex flex-col gap-2 flex-grow pointer-events-none">
+        <h3 className="text-xl font-bold text-white">{interest.name}</h3>
+        <p className="text-sm text-zinc-400 leading-relaxed">{interest.description}</p>
+      </div>
+      {/* Holographic Glare Effect */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: 'linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.1) 25%, transparent 30%)', backgroundSize: '200% 200%', animation: 'shimmer 2s infinite linear' }} />
+    </motion.div>
+  );
+}
 
 export default function ProfileExtras() {
   const [certIndex, setCertIndex] = useState(0);
@@ -141,6 +193,24 @@ export default function ProfileExtras() {
                 />
               ))}
             </div>
+          </div>
+        </motion.div>
+
+        {/* Interests & Anime */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          className="flex flex-col gap-6 w-full mt-12"
+        >
+          <div className="flex flex-col items-start w-full">
+            <h3 className="text-white text-2xl font-bold tracking-tight mb-2">Interests & Anime</h3>
+            <p className="text-zinc-400 text-sm">Things that keep me inspired</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ perspective: 1000 }}>
+            {interests.map((interest, idx) => (
+              <AnimeCard key={idx} interest={interest} />
+            ))}
           </div>
         </motion.div>
 

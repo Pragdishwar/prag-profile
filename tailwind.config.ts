@@ -24,6 +24,15 @@ const config: Config = {
         primary: 'var(--primary)',
         'primary-foreground': 'var(--primary-foreground)',
       },
+      keyframes: {
+        shimmer: {
+          '0%': { backgroundPosition: '200% 0' },
+          '100%': { backgroundPosition: '-200% 0' },
+        }
+      },
+      animation: {
+        shimmer: 'shimmer 3s infinite linear',
+      }
     },
   },
   plugins: [],

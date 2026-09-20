@@ -10,7 +10,7 @@ export const personalDetails = {
     twitter: 'https://twitter.com/pragdishwar',
   },
   profilePhoto: 'https://ui-avatars.com/api/?name=Pragdishwar+A&size=200&background=7C3AED&color=fff',
-  bio: "Computer Science undergraduate specializing in Artificial Intelligence, Full-Stack Development, and Intelligent Embedded Systems. Experienced in developing AI-powered applications, scalable web platforms, and IoT solutions using Python, React, FastAPI, and modern cloud technologies. Passionate about applied AI research, computer vision, and solving real-world engineering problems through innovative software and hardware solutions.",
+  bio: "Computer Science undergraduate specializing in Artificial Intelligence, Full-Stack Development, and Intelligent Embedded Systems. Experienced in developing AI-powered applications, scalable web platforms, and IoT solutions using Python, React, FastAPI, and modern cloud technologies. Passionate about applied AI research, computer vision, and solving real-world engineering problems through innovative software and hardware solutions. Also an avid anime enthusiast (Bleach, One Piece, Naruto) and Japanese learner!",
   stats: {
     experience: 2,
     projects: 8,
@@ -246,4 +246,28 @@ export const languages = [
   { name: 'English', proficiency: 'Professional Proficiency' },
   { name: 'Tamil', proficiency: 'Native' },
   { name: 'Japanese', proficiency: 'JLPT N4' }
+];
+
+export const interests = [
+  { 
+    name: 'Bleach', 
+    type: 'Anime', 
+    description: 'Bankai! Follows Ichigo Kurosaki, a Soul Reaper.',
+    image: 'https://i.pinimg.com/736x/21/df/b8/21dfb85b46e8c80fb61b3cdad3bb3a4d.jpg',
+    audio: 'https://www.myinstants.com/media/sounds/bleach-bankai_2.mp3'
+  },
+  { 
+    name: 'One Piece', 
+    type: 'Anime', 
+    description: 'The journey of Luffy to become the Pirate King.',
+    image: 'https://i.pinimg.com/originals/c9/79/29/c97929dffebff29fcd2e8e390c50d4f3.jpg',
+    audio: 'https://www.myinstants.com/media/sounds/luffy-gear-5-laugh.mp3'
+  },
+  { 
+    name: 'Naruto', 
+    type: 'Anime', 
+    description: 'Believe it! The tale of a ninja who wants to be Hokage.',
+    image: 'https://i.pinimg.com/736x/8e/08/96/8e08967de3ec6ebf3e2ef0beaf8de866.jpg',
+    audio: 'https://www.myinstants.com/media/sounds/naruto-dattebayo_B4zR9X2.mp3'
+  }
 ];
