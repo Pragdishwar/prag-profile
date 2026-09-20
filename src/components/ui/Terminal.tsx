@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cliCommands, profile, skills } from '../../lib/data';
+import { projects } from '../../data/portfolio';
 import { playBlip, playWhoosh } from '../../lib/audio';
 
 interface CommandHistory {
@@ -114,18 +115,19 @@ export default function Terminal() {
       output = (
         <div className="space-y-2">
           <p className="text-primary font-bold">PROJECTS</p>
-          {cliCommands['projects'] ? (
-            <ul className="list-disc pl-4">
-              <li>Earn2Equity - FINANCIAL · PLATFORM</li>
-              <li>ESP32-CAM Irrigation - EMBEDDED · IoT · VISION</li>
-            </ul>
-          ) : null}
+          <ul className="list-disc pl-4">
+            {projects.map(p => (
+              <li key={p.id}>
+                {p.title} - {p.techStack.slice(0, 3).join(' · ')}
+              </li>
+            ))}
+          </ul>
         </div>
       );
     } else if (cmd === 'stats') {
       output = (
         <div className="space-y-1">
-          <p><span className="text-zinc-500">Projects:</span> 12+</p>
+          <p><span className="text-zinc-500">Projects:</span> {projects.length}+</p>
           <p><span className="text-zinc-500">System Uptime:</span> 99.7%</p>
           <p><span className="text-zinc-500">Commits:</span> 847</p>
           <p><span className="text-zinc-500">JP Level:</span> N4</p>
@@ -138,9 +140,21 @@ export default function Terminal() {
     } else if (cmd === 'spiderman') {
       output = <span className="text-red-500 font-mono">With great power comes great responsibility...</span>;
       setShowSpiderman(true);
-      setIsOpen(false); // Close terminal to show full screen effect
+      setIsOpen(false);
     } else if (cmd === 'matrix') {
       output = <span className="text-green-500 font-mono">Wake up, Neo... The Matrix has you.</span>;
+    } else if (cmd === 'sakura') {
+      output = <span className="text-pink-400 font-mono">Sakura Fall toggled!</span>;
+      window.dispatchEvent(new CustomEvent('toggle-sakura'));
+    } else if (cmd === 'summon') {
+      output = <span className="text-orange-400 font-mono">Kuchiyose no Jutsu!</span>;
+      window.dispatchEvent(new CustomEvent('toggle-summon'));
+    } else if (cmd === 'cursor') {
+      output = <span className="text-purple-400 font-mono">Custom cursor toggled!</span>;
+      window.dispatchEvent(new CustomEvent('toggle-cursor'));
+    } else if (cmd === 'bankai') {
+      output = <span className="text-red-600 font-bold font-mono">BAN... KAI!</span>;
+      window.dispatchEvent(new CustomEvent('toggle-bankai'));
     } else {
       output = <span className="text-red-400">Command not found: {cmd}. Type 'help' for available commands.</span>;
     }

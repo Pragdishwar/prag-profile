@@ -10,7 +10,6 @@ import Contact from '@/components/sections/Contact';
 import SakuraFall from '@/components/ui/SakuraFall';
 import AnimeCursor from '@/components/ui/AnimeCursor';
 import SummonJutsu from '@/components/ui/SummonJutsu';
-import InteractiveTerminal from '@/components/ui/InteractiveTerminal';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -55,32 +54,35 @@ export default function Home() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const handleTerminalCommand = (cmd: string) => {
-    switch (cmd) {
-      case 'sakura':
-        setSakuraEnabled(prev => !prev);
-        break;
-      case 'summon':
-        setSummonEnabled(prev => !prev);
-        break;
-      case 'cursor':
-        setCursorEnabled(prev => !prev);
-        break;
-      case 'bankai':
-        setOtakuMode(prev => !prev);
-        const audio = new Audio('https://www.myinstants.com/media/sounds/bleach-bankai_2.mp3');
-        audio.play().catch(() => {});
-        break;
-    }
-  };
+  // Listen for terminal events
+  useEffect(() => {
+    const handleSakura = () => setSakuraEnabled(prev => !prev);
+    const handleSummon = () => setSummonEnabled(prev => !prev);
+    const handleCursor = () => setCursorEnabled(prev => !prev);
+    const handleBankai = () => {
+      setOtakuMode(prev => !prev);
+      const audio = new Audio('https://www.myinstants.com/media/sounds/bleach-bankai_2.mp3');
+      audio.play().catch(() => {});
+    };
+
+    window.addEventListener('toggle-sakura', handleSakura);
+    window.addEventListener('toggle-summon', handleSummon);
+    window.addEventListener('toggle-cursor', handleCursor);
+    window.addEventListener('toggle-bankai', handleBankai);
+
+    return () => {
+      window.removeEventListener('toggle-sakura', handleSakura);
+      window.removeEventListener('toggle-summon', handleSummon);
+      window.removeEventListener('toggle-cursor', handleCursor);
+      window.removeEventListener('toggle-bankai', handleBankai);
+    };
+  }, []);
 
   return (
     <>
       {cursorEnabled && <AnimeCursor />}
       {sakuraEnabled && <SakuraFall />}
       {summonEnabled && <SummonJutsu />}
-      
-      <InteractiveTerminal onCommand={handleTerminalCommand} />
 
       <main className={`flex flex-col min-h-screen ${otakuMode ? 'hue-rotate-90 saturate-200 transition-all duration-1000' : 'transition-all duration-1000'}`}>
         <Hero />

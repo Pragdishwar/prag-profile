@@ -152,5 +152,9 @@ export const cliCommands: Record<string, { desc: string; descJP: string }> = {
   'lang jp':      { desc: 'Switch UI to Japanese', descJP: 'UIを日本語に切替' },
   'lang en':      { desc: 'Switch UI to English', descJP: 'UIを英語に切替' },
   clear:          { desc: 'Clear terminal output', descJP: 'ターミナル出力をクリア' },
+  sakura:         { desc: 'Toggle Sakura Fall', descJP: '桜の落下を切り替える' },
+  summon:         { desc: 'Summoning Jutsu', descJP: '口寄せの術' },
+  cursor:         { desc: 'Toggle Anime Cursor', descJP: 'アニメカーソルを切り替える' },
+  bankai:         { desc: 'Activate Otaku Mode', descJP: 'オタクモードを有効にする' },
   spiderman:      { desc: '??? Easter egg', descJP: '??? イースターエッグ' },
 };
