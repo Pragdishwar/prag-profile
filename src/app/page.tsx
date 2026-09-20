@@ -10,6 +10,7 @@ import Contact from '@/components/sections/Contact';
 import SakuraFall from '@/components/ui/SakuraFall';
 import AnimeCursor from '@/components/ui/AnimeCursor';
 import SummonJutsu from '@/components/ui/SummonJutsu';
+import InteractiveTerminal from '@/components/ui/InteractiveTerminal';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
