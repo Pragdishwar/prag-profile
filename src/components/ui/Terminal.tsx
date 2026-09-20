@@ -162,6 +162,7 @@ export default function Terminal() {
           <p><span className="text-zinc-500">GitHub:</span> <a href="https://github.com/Pragdishwar" target="_blank" className="text-primary hover:underline">github.com/Pragdishwar</a></p>
           <p><span className="text-zinc-500">LinkedIn:</span> <a href="https://www.linkedin.com/in/pragdishwara/" target="_blank" className="text-primary hover:underline">linkedin.com/in/pragdishwara</a></p>
           <p><span className="text-zinc-500">Twitter:</span> <a href="https://twitter.com/pragdishwar" target="_blank" className="text-primary hover:underline">twitter.com/pragdishwar</a></p>
+          <p><span className="text-zinc-500">Instagram:</span> <a href="https://www.instagram.com/praga_.04/" target="_blank" className="text-primary hover:underline">instagram.com/praga_.04</a></p>
           <p><span className="text-zinc-500">Email:</span> <a href="mailto:pragdishwar@gmail.com" className="text-primary hover:underline">pragdishwar@gmail.com</a></p>
         </div>
       );

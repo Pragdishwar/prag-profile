@@ -8,6 +8,7 @@ export const personalDetails = {
     github: 'https://github.com/Pragdishwar',
     linkedin: 'https://www.linkedin.com/in/pragdishwara/',
     twitter: 'https://twitter.com/pragdishwar',
+    instagram: 'https://www.instagram.com/praga_.04/'
   },
   profilePhoto: 'https://ui-avatars.com/api/?name=Pragdishwar+A&size=200&background=7C3AED&color=fff',
   bio: "Computer Science undergraduate specializing in Artificial Intelligence, Full-Stack Development, and Intelligent Embedded Systems. Experienced in developing AI-powered applications, scalable web platforms, and IoT solutions using Python, React, FastAPI, and modern cloud technologies. Passionate about applied AI research, computer vision, and solving real-world engineering problems through innovative software and hardware solutions. Also an avid anime enthusiast (Bleach, One Piece, Naruto) and Japanese learner!",

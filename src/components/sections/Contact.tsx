@@ -96,6 +96,13 @@ export default function Contact() {
                 </div>
                 <span className="font-medium">LinkedIn</span>
               </motion.a>
+
+              <motion.a whileHover={{ x: 10 }} href={personalDetails.socials.instagram} target="_blank" rel="noreferrer" className="flex items-center gap-4 text-zinc-300 hover:text-white transition-colors group">
+                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-purple-500/20 group-hover:border-purple-500/50 transition-colors shadow-[0_0_0_rgba(168,85,247,0)] group-hover:shadow-[0_0_15px_rgba(168,85,247,0.4)]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                </div>
+                <span className="font-medium">Instagram</span>
+              </motion.a>
             </motion.div>
           </motion.div>
 
