@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '../components/Navbar';
 import Terminal from '../components/ui/Terminal';
@@ -32,7 +32,12 @@ export const metadata: Metadata = {
     description: 'Portfolio of Pragdishwar A, specializing in AI-powered applications, scalable web platforms, and IoT solutions.',
     images: ['https://api.microlink.io/?url=https%3A%2F%2Fpragdishwar.vercel.app&screenshot=true&meta=false&embed=screenshot.url'],
   },
+  manifest: '/manifest.json',
+  themeColor: '#09090b',
 };
+
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -43,6 +48,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Terminal />
           <Navbar />
           {children}
+          <Analytics />
+          <SpeedInsights />
         </SmoothScroll>
       </body>
     </html>
