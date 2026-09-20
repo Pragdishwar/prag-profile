@@ -260,7 +260,7 @@ export const interests = [
     name: 'One Piece', 
     type: 'Anime', 
     description: 'The journey of Luffy to become the Pirate King.',
-    image: 'https://upload.wikimedia.org/wikipedia/en/9/90/One_Piece%2C_Volume_61_Cover_%28Art%29.jpg',
+    image: 'https://image.tmdb.org/t/p/w500/cMD9Ygz11zjJzAovURpO75Qg7rT.jpg',
     audio: 'https://www.myinstants.com/media/sounds/luffy-gear-5-laugh.mp3'
   },
   { 

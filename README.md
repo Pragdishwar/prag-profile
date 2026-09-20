@@ -1,28 +1,57 @@
-# Prag Profile
+# Pragdishwar's Interactive Portfolio
 
-A professional portfolio and personal profile built with [Next.js](https://nextjs.org), designed for seamless deployment on [Vercel](https://vercel.com).
+Welcome to my personal portfolio! This is a highly interactive, animated, and easter-egg-filled web application built to showcase my journey as a Full-Stack Developer, AI Engineer, and Embedded IoT enthusiast. 
 
-## Overview
+It is designed to feel like a living operating system, blending professional engineering with my love for Anime and Cyberpunk aesthetics.
 
-This project serves as a personal website. It leverages the modern React ecosystem, specifically the Next.js App Router for optimized performance, routing, and SEO.
+## 🚀 Live Demo
+**[pragdishwar.vercel.app](https://pragdishwar.vercel.app)**
 
-## Tech Stack
+## 🌟 Key Features
 
-- **Framework**: [Next.js](https://nextjs.org) (App Router)
-- **Styling**: Tailwind CSS
-- **Deployment**: [Vercel](https://vercel.com)
+*   **Interactive System Terminal**: Press `T` or click the floating terminal icon to open a fully functional CLI. Type `help` to see all commands!
+*   **Anime Easter Eggs**: Try running `sakura`, `summon`, `cursor`, `bankai`, or `scouter` in the terminal to trigger unique visual and audio effects.
+*   **The Konami Code**: Enter the classic Konami sequence (`↑ ↑ ↓ ↓`) anywhere on the screen to trigger an epic "Domain Expansion".
+*   **Cyberpunk UI Soundscape**: The entire site is wired with a custom Web Audio API synthesizer, providing subtle auditory feedback (`blips` and `whooshes`) on hover and click.
+*   **Live-Typing Hero**: A custom typewriter effect that actively types out my roles in real-time.
+*   **Live GitHub Heatmap**: Automatically fetches and renders a styled SVG of my real-time GitHub contributions.
+*   **Progressive Web App (PWA)**: Installable as a standalone app on mobile devices.
+*   **Magnetic Buttons & 3D Tilt Cards**: Fluid, physics-based interactions powered by Framer Motion.
+*   **Performance First**: 100% Lighthouse score, Vercel Analytics, and Next.js App Router optimization.
 
-## Getting Started
+## 🛠️ Tech Stack
 
-First, install dependencies and run the development server:
+*   **Framework**: [Next.js 14+](https://nextjs.org) (App Router)
+*   **Language**: TypeScript
+*   **Styling**: Tailwind CSS
+*   **Animations**: Framer Motion, custom CSS keyframes, and HTML5 Canvas (for Matrix Rain)
+*   **Audio**: Native Web Audio API (`AudioContext`)
+*   **Analytics**: Vercel Analytics & Speed Insights
+*   **Deployment**: Vercel
+
+## 💻 Getting Started
+
+To run this project locally:
 
 ```bash
+# Clone the repository
+git clone https://github.com/Pragdishwar/prag-profile.git
+
+# Navigate to the directory
+cd prag-profile
+
+# Install dependencies
 npm install
+
+# Start the development server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. You can start editing the page by modifying `src/app/page.tsx` (or `app/page.tsx`). The page auto-updates as you edit the file.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Deployment
+## 🤝 Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Feel free to reach out for collaborations or opportunities!
+- **Email**: pragdishwar@gmail.com
+- **LinkedIn**: [linkedin.com/in/pragdishwara](https://www.linkedin.com/in/pragdishwara/)
+- **GitHub**: [@Pragdishwar](https://github.com/Pragdishwar)
