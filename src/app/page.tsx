@@ -54,7 +54,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className={`flex flex-col min-h-screen ${otakuMode ? 'hue-rotate-90 saturate-200 transition-all duration-1000' : 'transition-all duration-1000'}`}>
+    <>
       <AnimeCursor />
       {sakuraEnabled && <SakuraFall />}
       {summonEnabled && <SummonJutsu />}
@@ -77,33 +77,35 @@ export default function Home() {
           <span className={`text-xl transition-transform ${summonEnabled ? 'scale-110' : 'scale-90 opacity-50 grayscale'}`}>📜</span>
         </button>
       </div>
-      
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <ProfileExtras />
-      <Contact />
-      
-      {/* Footer */}
-      <footer className="text-center py-16 text-zinc-500 text-sm border-t border-white/5 flex flex-col items-center justify-center gap-2 overflow-hidden">
-        <p>© {new Date().getFullYear()} Pragdishwar A.</p>
-        <div className="font-mono text-xs tracking-widest uppercase text-zinc-600 mt-2 text-center max-w-lg px-4 h-8 relative">
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={quoteIndex}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.5 }}
-              className="absolute inset-x-0 w-full"
-            >
-              {animeQuotes[quoteIndex]}
-            </motion.p>
-          </AnimatePresence>
-        </div>
-      </footer>
-    </main>
+
+      <main className={`flex flex-col min-h-screen ${otakuMode ? 'hue-rotate-90 saturate-200 transition-all duration-1000' : 'transition-all duration-1000'}`}>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <ProfileExtras />
+        <Contact />
+        
+        {/* Footer */}
+        <footer className="text-center py-16 text-zinc-500 text-sm border-t border-white/5 flex flex-col items-center justify-center gap-2 overflow-hidden w-full">
+          <p>© {new Date().getFullYear()} Pragdishwar A.</p>
+          <div className="font-mono text-xs tracking-widest uppercase text-zinc-600 mt-2 text-center w-full max-w-4xl px-4 min-h-[3rem] relative mx-auto flex items-center justify-center">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={quoteIndex}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.5 }}
+                className="absolute w-full px-4"
+              >
+                {animeQuotes[quoteIndex]}
+              </motion.p>
+            </AnimatePresence>
+          </div>
+        </footer>
+      </main>
+    </>
   );
 }

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { motion, Variants } from 'framer-motion';
 import SpotlightCard from '../ui/SpotlightCard';
@@ -20,7 +20,7 @@ const item: Variants = {
 
 export default function Experience() {
   return (
-    <Section id="experience" title="Experience" number="04" subtitle="è·æ­´ãƒ»çµŒé¨“ â€¢ Journey">
+    <Section id="experience" title="Experience" number="04" subtitle="職歴・経験 • Journey">
       <div className="flex flex-col gap-12">
 
         <div className="max-w-3xl mx-auto w-full px-4 sm:px-6 md:px-8">

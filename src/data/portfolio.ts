@@ -253,21 +253,21 @@ export const interests = [
     name: 'Bleach', 
     type: 'Anime', 
     description: 'Bankai! Follows Ichigo Kurosaki, a Soul Reaper.',
-    image: 'https://i.pinimg.com/736x/21/df/b8/21dfb85b46e8c80fb61b3cdad3bb3a4d.jpg',
+    image: 'https://upload.wikimedia.org/wikipedia/en/7/72/Bleachanime.png',
     audio: 'https://www.myinstants.com/media/sounds/bleach-bankai_2.mp3'
   },
   { 
     name: 'One Piece', 
     type: 'Anime', 
     description: 'The journey of Luffy to become the Pirate King.',
-    image: 'https://i.pinimg.com/originals/c9/79/29/c97929dffebff29fcd2e8e390c50d4f3.jpg',
+    image: 'https://upload.wikimedia.org/wikipedia/en/9/90/One_Piece%2C_Volume_61_Cover_%28Art%29.jpg',
     audio: 'https://www.myinstants.com/media/sounds/luffy-gear-5-laugh.mp3'
   },
   { 
     name: 'Naruto', 
     type: 'Anime', 
     description: 'Believe it! The tale of a ninja who wants to be Hokage.',
-    image: 'https://i.pinimg.com/736x/8e/08/96/8e08967de3ec6ebf3e2ef0beaf8de866.jpg',
+    image: 'https://upload.wikimedia.org/wikipedia/en/9/94/NarutoCoverTankobon1.jpg',
     audio: 'https://www.myinstants.com/media/sounds/naruto-dattebayo_B4zR9X2.mp3'
   }
 ];
