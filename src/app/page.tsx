@@ -22,6 +22,7 @@ const animeQuotes = [
 export default function Home() {
   const [sakuraEnabled, setSakuraEnabled] = useState(false);
   const [summonEnabled, setSummonEnabled] = useState(false);
+  const [cursorEnabled, setCursorEnabled] = useState(true);
   const [otakuMode, setOtakuMode] = useState(false);
   const [quoteIndex, setQuoteIndex] = useState(0);
 
@@ -55,12 +56,20 @@ export default function Home() {
 
   return (
     <>
-      <AnimeCursor />
+      {cursorEnabled && <AnimeCursor />}
       {sakuraEnabled && <SakuraFall />}
       {summonEnabled && <SummonJutsu />}
       
       {/* Floating Buttons */}
       <div className="fixed bottom-6 left-6 flex flex-col gap-4 z-50">
+        <button 
+          onClick={() => setCursorEnabled(!cursorEnabled)}
+          className="bg-white/5 border border-white/10 p-3 rounded-full text-zinc-400 backdrop-blur-md hover:bg-purple-500/20 hover:border-purple-500/50 hover:text-white hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all flex items-center justify-center group outline-none"
+          title="Toggle Custom Cursor"
+        >
+          <span className={`text-xl transition-transform ${cursorEnabled ? 'scale-110' : 'scale-90 opacity-50 grayscale'}`}>🗡️</span>
+        </button>
+
         <button 
           onClick={() => setSakuraEnabled(!sakuraEnabled)}
           className="bg-white/5 border border-white/10 p-3 rounded-full text-zinc-400 backdrop-blur-md hover:bg-pink-500/20 hover:border-pink-500/50 hover:text-white hover:shadow-[0_0_15px_rgba(236,72,153,0.3)] transition-all flex items-center justify-center group outline-none"
