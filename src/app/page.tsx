@@ -23,7 +23,7 @@ const animeQuotes = [
 export default function Home() {
   const [sakuraEnabled, setSakuraEnabled] = useState(false);
   const [summonEnabled, setSummonEnabled] = useState(false);
-  const [cursorEnabled, setCursorEnabled] = useState(true);
+  const [cursorEnabled, setCursorEnabled] = useState(false);
   const [matrixEnabled, setMatrixEnabled] = useState(false);
   const [otakuMode, setOtakuMode] = useState(false);
   const [quoteIndex, setQuoteIndex] = useState(0);
