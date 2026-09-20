@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
@@ -12,6 +12,8 @@ const navItems = [
   { name: 'Experience', href: '#experience' },
   { name: 'Contact', href: '#contact' },
 ];
+
+import { playBlip, playWhoosh } from '../lib/audio';
 
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState(navItems[0].name);
@@ -52,7 +54,7 @@ export default function Navbar() {
         />
       )}
       <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between relative">
-        <a href="#hero" className="text-xl font-bold tracking-tighter text-gradient" onClick={() => setActiveTab('Home')}>
+        <a href="#hero" className="text-xl font-bold tracking-tighter text-gradient" onClick={() => { setActiveTab('Home'); playWhoosh(); }} onMouseEnter={playBlip}>
           PA.
         </a>
 
@@ -66,7 +68,8 @@ export default function Navbar() {
                   className={`relative px-4 py-2 text-sm font-medium transition-colors ${
                     activeTab === item.name ? 'text-white' : 'text-zinc-400 hover:text-white'
                   }`}
-                  onClick={() => setActiveTab(item.name)}
+                  onMouseEnter={playBlip}
+                  onClick={() => { setActiveTab(item.name); playWhoosh(); }}
                 >
                   {activeTab === item.name && (
                     <motion.div
@@ -85,6 +88,8 @@ export default function Navbar() {
             <a 
               href="/resume.pdf" 
               download
+              onMouseEnter={playBlip}
+              onClick={playWhoosh}
               className="px-5 py-2 text-sm font-bold bg-white text-black rounded-full hover:bg-zinc-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.3)] flex items-center gap-2"
             >
               Resume

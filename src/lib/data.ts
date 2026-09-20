@@ -166,4 +166,5 @@ export const cliCommands: Record<string, { desc: string; descJP: string }> = {
   time:           { desc: 'Show current local time', descJP: '現在の現地時間を表示' },
   weather:        { desc: 'Show local weather', descJP: '現地の天気を表示' },
   batman:         { desc: 'Summon the Dark Knight', descJP: 'ダークナイトを召喚' },
+  scouter:        { desc: 'Measure power level', descJP: '戦闘力を測定する' },
 };

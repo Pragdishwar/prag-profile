@@ -206,6 +206,25 @@ YJGS8P"Y888P"Y888P"Y888P"Y8888P
           <span className="text-white block mt-2 font-bold">"I am vengeance. I am the night. I am Batman."</span>
         </pre>
       );
+    } else if (cmd === 'scouter') {
+      output = (
+        <div className="space-y-2 mt-2">
+          <p className="text-cyan-400 font-mono animate-pulse">Initializing Scouter...</p>
+          <pre className="text-amber-400 text-xs leading-none font-mono">
+{`   _____
+  /     \\
+ | () () |  [TARGET LOCKED]
+  \\  ^  /
+   |||||
+`}
+          </pre>
+          <p className="text-zinc-300">Scanning bio-signatures...</p>
+          <div className="w-full bg-zinc-900 h-2 rounded overflow-hidden">
+            <div className="bg-red-500 h-full animate-[scouter_1s_ease-out_forwards] w-full" style={{ animationDuration: '2s' }}></div>
+          </div>
+          <p className="text-red-500 font-black text-xl mt-2 animate-bounce">IT'S OVER 9000!!!</p>
+        </div>
+      );
     } else {
       output = <span className="text-red-400">Command not found: {cmd}. Type 'help' for available commands.</span>;
     }

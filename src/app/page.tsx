@@ -11,6 +11,7 @@ import SakuraFall from '@/components/ui/SakuraFall';
 import AnimeCursor from '@/components/ui/AnimeCursor';
 import SummonJutsu from '@/components/ui/SummonJutsu';
 import MatrixRain from '@/components/ui/MatrixRain';
+import DomainExpansion from '@/components/ui/DomainExpansion';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -25,6 +26,7 @@ export default function Home() {
   const [summonEnabled, setSummonEnabled] = useState(false);
   const [cursorEnabled, setCursorEnabled] = useState(false);
   const [matrixEnabled, setMatrixEnabled] = useState(false);
+  const [domainExpanded, setDomainExpanded] = useState(false);
   const [otakuMode, setOtakuMode] = useState(false);
   const [quoteIndex, setQuoteIndex] = useState(0);
 
@@ -35,21 +37,34 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  // Bankai Easter Egg Listener
+  // Bankai and Konami Easter Egg Listener
   useEffect(() => {
-    const secretCode = "bankai";
-    let input = "";
+    const bankaiCode = "bankai";
+    const konamiCode = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown"];
+    
+    let inputStr = "";
+    let konamiInput: string[] = [];
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      input += e.key.toLowerCase();
-      if (input.length > secretCode.length) {
-        input = input.substring(input.length - secretCode.length);
+      // Bankai
+      inputStr += e.key.toLowerCase();
+      if (inputStr.length > bankaiCode.length) {
+        inputStr = inputStr.substring(inputStr.length - bankaiCode.length);
       }
-      if (input === secretCode) {
+      if (inputStr === bankaiCode) {
         setOtakuMode(prev => !prev);
-        // Play Bankai Sound
         const audio = new Audio('https://www.myinstants.com/media/sounds/bleach-bankai_2.mp3');
         audio.play().catch(() => {});
+      }
+
+      // Konami (Domain Expansion)
+      konamiInput.push(e.key);
+      if (konamiInput.length > konamiCode.length) {
+        konamiInput.shift();
+      }
+      if (JSON.stringify(konamiInput) === JSON.stringify(konamiCode)) {
+        setDomainExpanded(true);
+        konamiInput = []; // Reset
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -89,6 +104,7 @@ export default function Home() {
       {sakuraEnabled && <SakuraFall />}
       {summonEnabled && <SummonJutsu />}
       {matrixEnabled && <MatrixRain />}
+      {domainExpanded && <DomainExpansion onComplete={() => setDomainExpanded(false)} />}
 
       <main className={`flex flex-col min-h-screen ${otakuMode ? 'hue-rotate-90 saturate-200 transition-all duration-1000' : 'transition-all duration-1000'}`}>
         <Hero />

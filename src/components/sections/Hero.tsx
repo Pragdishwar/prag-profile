@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, Variants, useMotionValue, useSpring } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Section from '../ui/Section';
 import MagneticButton from '../ui/MagneticButton';
 import { personalDetails } from '../../data/portfolio';
@@ -24,6 +24,33 @@ const item: Variants = {
     y: 0, 
     transition: { type: 'spring', stiffness: 100, damping: 15 } 
   }
+};
+
+const TypewriterEffect = ({ words }: { words: string[] }) => {
+  const [index, setIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [reverse, setReverse] = useState(false);
+
+  useEffect(() => {
+    if (subIndex === words[index].length + 1 && !reverse) {
+      const timeout = setTimeout(() => setReverse(true), 1500);
+      return () => clearTimeout(timeout);
+    }
+
+    if (subIndex === 0 && reverse) {
+      setReverse(false);
+      setIndex((prev) => (prev + 1) % words.length);
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setSubIndex((prev) => prev + (reverse ? -1 : 1));
+    }, reverse ? 50 : 100);
+
+    return () => clearTimeout(timeout);
+  }, [subIndex, index, reverse, words]);
+
+  return <span>{`${words[index].substring(0, subIndex)}`}</span>;
 };
 
 export default function Hero() {
@@ -87,11 +114,19 @@ export default function Hero() {
             Hi, I'm <span className="text-gradient">Pragdishwar A</span>
           </motion.h1>
           
-          <motion.h2 variants={item} className="text-2xl md:text-3xl text-zinc-300 font-medium tracking-tight">
-            Full-Stack Developer & IoT Engineer.
-          </motion.h2>
+          <motion.div variants={item} className="text-2xl md:text-3xl text-zinc-300 font-medium tracking-tight h-10 flex items-center gap-1">
+            <span>&gt;</span>
+            <TypewriterEffect 
+              words={["Full-Stack Developer", "AI Engineer", "Embedded IoT Enthusiast", "Otaku"]} 
+            />
+            <motion.span 
+              animate={{ opacity: [1, 0] }} 
+              transition={{ repeat: Infinity, duration: 0.8 }}
+              className="w-3 h-8 bg-primary block"
+            />
+          </motion.div>
           
-          <motion.p variants={item} className="text-lg text-zinc-400 max-w-2xl leading-relaxed">
+          <motion.p variants={item} className="text-lg text-zinc-400 max-w-2xl leading-relaxed mt-4">
             Third-year CSE undergraduate based in Chennai, bridging software and hardware to build intelligent systems.
           </motion.p>
 
