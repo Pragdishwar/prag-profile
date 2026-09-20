@@ -157,4 +157,13 @@ export const cliCommands: Record<string, { desc: string; descJP: string }> = {
   cursor:         { desc: 'Toggle Anime Cursor', descJP: 'アニメカーソルを切り替える' },
   bankai:         { desc: 'Activate Otaku Mode', descJP: 'オタクモードを有効にする' },
   spiderman:      { desc: '??? Easter egg', descJP: '??? イースターエッグ' },
+  matrix:         { desc: 'Enter the Matrix', descJP: 'マトリックスに入る' },
+  socials:        { desc: 'Show social links', descJP: 'ソーシャルリンクを表示' },
+  contact:        { desc: 'Show social links', descJP: 'ソーシャルリンクを表示' },
+  sudo:           { desc: 'Execute command as superuser', descJP: 'スーパーユーザーとして実行' },
+  hire:           { desc: 'Contact for hiring', descJP: '採用のための連絡' },
+  repo:           { desc: 'Show source code repository', descJP: 'ソースコードのレポジトリを表示' },
+  time:           { desc: 'Show current local time', descJP: '現在の現地時間を表示' },
+  weather:        { desc: 'Show local weather', descJP: '現地の天気を表示' },
+  batman:         { desc: 'Summon the Dark Knight', descJP: 'ダークナイトを召喚' },
 };

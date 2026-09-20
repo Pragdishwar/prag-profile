@@ -143,6 +143,7 @@ export default function Terminal() {
       setIsOpen(false);
     } else if (cmd === 'matrix') {
       output = <span className="text-green-500 font-mono">Wake up, Neo... The Matrix has you.</span>;
+      window.dispatchEvent(new CustomEvent('toggle-matrix'));
     } else if (cmd === 'sakura') {
       output = <span className="text-pink-400 font-mono">Sakura Fall toggled!</span>;
       window.dispatchEvent(new CustomEvent('toggle-sakura'));
@@ -155,6 +156,56 @@ export default function Terminal() {
     } else if (cmd === 'bankai') {
       output = <span className="text-red-600 font-bold font-mono">BAN... KAI!</span>;
       window.dispatchEvent(new CustomEvent('toggle-bankai'));
+    } else if (cmd === 'socials' || cmd === 'contact') {
+      output = (
+        <div className="space-y-1">
+          <p><span className="text-zinc-500">GitHub:</span> <a href="https://github.com/Pragdishwar" target="_blank" className="text-primary hover:underline">github.com/Pragdishwar</a></p>
+          <p><span className="text-zinc-500">LinkedIn:</span> <a href="https://www.linkedin.com/in/pragdishwara/" target="_blank" className="text-primary hover:underline">linkedin.com/in/pragdishwara</a></p>
+          <p><span className="text-zinc-500">Twitter:</span> <a href="https://twitter.com/pragdishwar" target="_blank" className="text-primary hover:underline">twitter.com/pragdishwar</a></p>
+          <p><span className="text-zinc-500">Email:</span> <a href="mailto:pragdishwar@gmail.com" className="text-primary hover:underline">pragdishwar@gmail.com</a></p>
+        </div>
+      );
+    } else if (cmd.startsWith('sudo ')) {
+      output = <span className="text-red-500 font-bold">Pragdishwar is not in the sudoers file. This incident will be reported.</span>;
+    } else if (cmd === 'sudo') {
+      output = <span className="text-red-500 font-bold">usage: sudo command</span>;
+    } else if (cmd === 'hire') {
+      output = (
+        <div className="space-y-2">
+          <p className="text-green-400">Initiating hiring protocol...</p>
+          <p>Please send an email to <a href="mailto:pragdishwar@gmail.com" className="text-primary hover:underline">pragdishwar@gmail.com</a></p>
+        </div>
+      );
+      setTimeout(() => window.open('mailto:pragdishwar@gmail.com'), 1000);
+    } else if (cmd === 'repo' || cmd === 'source') {
+      output = (
+        <div className="space-y-1">
+          <p>Fetching source code...</p>
+          <p><a href="https://github.com/Pragdishwar/prag-profile" target="_blank" className="text-primary hover:underline">https://github.com/Pragdishwar/prag-profile</a></p>
+        </div>
+      );
+    } else if (cmd === 'time') {
+      const chennaiTime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+      output = <span className="text-zinc-300">Current time in Chennai, India: <span className="text-primary">{chennaiTime}</span></span>;
+    } else if (cmd === 'weather') {
+      output = <span className="text-zinc-300">Fetching weather data for Chennai... <span className="text-amber-400">32°C, Partly Cloudy, 75% Humidity</span></span>;
+    } else if (cmd === 'batman') {
+      output = (
+        <pre className="text-zinc-500 text-xs leading-none mt-2 font-mono">
+{`       _,    _   _    ,_
+  .o888P     Y8o8Y     Y888o.
+ d88888      88888      88888b
+d888888b_  _d88888b_  _d888888b
+8888888888888888888888888888888
+8888888888888888888888888888888
+YJGS8P"Y888P"Y888P"Y888P"Y8888P
+ Y888   '8'   Y8P   '8'   888Y
+  '8o          V          o8'
+
+`}
+          <span className="text-white block mt-2 font-bold">"I am vengeance. I am the night. I am Batman."</span>
+        </pre>
+      );
     } else {
       output = <span className="text-red-400">Command not found: {cmd}. Type 'help' for available commands.</span>;
     }

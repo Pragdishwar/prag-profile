@@ -10,6 +10,7 @@ import Contact from '@/components/sections/Contact';
 import SakuraFall from '@/components/ui/SakuraFall';
 import AnimeCursor from '@/components/ui/AnimeCursor';
 import SummonJutsu from '@/components/ui/SummonJutsu';
+import MatrixRain from '@/components/ui/MatrixRain';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -23,6 +24,7 @@ export default function Home() {
   const [sakuraEnabled, setSakuraEnabled] = useState(false);
   const [summonEnabled, setSummonEnabled] = useState(false);
   const [cursorEnabled, setCursorEnabled] = useState(true);
+  const [matrixEnabled, setMatrixEnabled] = useState(false);
   const [otakuMode, setOtakuMode] = useState(false);
   const [quoteIndex, setQuoteIndex] = useState(0);
 
@@ -59,6 +61,7 @@ export default function Home() {
     const handleSakura = () => setSakuraEnabled(prev => !prev);
     const handleSummon = () => setSummonEnabled(prev => !prev);
     const handleCursor = () => setCursorEnabled(prev => !prev);
+    const handleMatrix = () => setMatrixEnabled(prev => !prev);
     const handleBankai = () => {
       setOtakuMode(prev => !prev);
       const audio = new Audio('https://www.myinstants.com/media/sounds/bleach-bankai_2.mp3');
@@ -68,12 +71,14 @@ export default function Home() {
     window.addEventListener('toggle-sakura', handleSakura);
     window.addEventListener('toggle-summon', handleSummon);
     window.addEventListener('toggle-cursor', handleCursor);
+    window.addEventListener('toggle-matrix', handleMatrix);
     window.addEventListener('toggle-bankai', handleBankai);
 
     return () => {
       window.removeEventListener('toggle-sakura', handleSakura);
       window.removeEventListener('toggle-summon', handleSummon);
       window.removeEventListener('toggle-cursor', handleCursor);
+      window.removeEventListener('toggle-matrix', handleMatrix);
       window.removeEventListener('toggle-bankai', handleBankai);
     };
   }, []);
@@ -83,6 +88,7 @@ export default function Home() {
       {cursorEnabled && <AnimeCursor />}
       {sakuraEnabled && <SakuraFall />}
       {summonEnabled && <SummonJutsu />}
+      {matrixEnabled && <MatrixRain />}
 
       <main className={`flex flex-col min-h-screen ${otakuMode ? 'hue-rotate-90 saturate-200 transition-all duration-1000' : 'transition-all duration-1000'}`}>
         <Hero />
