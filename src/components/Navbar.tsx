@@ -85,6 +85,20 @@ export default function Navbar() {
           </ul>
           
           <MagneticButton>
+            <button
+              onClick={() => {
+                playWhoosh();
+                document.documentElement.classList.toggle('bankai-mode');
+              }}
+              onMouseEnter={playBlip}
+              className="px-4 py-2 text-xs font-black tracking-widest bg-zinc-900 text-zinc-400 border border-zinc-800 rounded-full hover:bg-black hover:text-red-500 hover:border-red-500/50 transition-all duration-500 uppercase flex items-center gap-2 group"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 group-hover:bg-red-500 group-hover:shadow-[0_0_8px_rgba(255,0,0,0.8)] transition-colors" />
+              Bankai
+            </button>
+          </MagneticButton>
+          
+          <MagneticButton>
             <a 
               href="/resume.pdf" 
               download
@@ -99,7 +113,16 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Nav (future scope / basic fallback) */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-4">
+          <button
+            onClick={() => {
+              playWhoosh();
+              document.documentElement.classList.toggle('bankai-mode');
+            }}
+            className="text-xs font-black tracking-widest text-zinc-500 hover:text-red-500 transition-colors uppercase"
+          >
+            Bankai
+          </button>
           <button className="text-zinc-400 hover:text-white p-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
           </button>
