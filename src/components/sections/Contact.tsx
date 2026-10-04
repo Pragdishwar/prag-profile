@@ -76,7 +76,7 @@ export default function Contact() {
                     id="name"
                     required
                     className="bg-black/50 border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-white transition-colors w-full"
-                    placeholder="John Doe"
+                    placeholder="Gabe Itch"
                   />
                 </div>
                 
@@ -88,7 +88,7 @@ export default function Contact() {
                     id="email"
                     required
                     className="bg-black/50 border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-white transition-colors w-full"
-                    placeholder="john@example.com"
+                    placeholder="Gabeitch@example.com"
                   />
                 </div>
 

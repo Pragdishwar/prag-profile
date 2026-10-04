@@ -94,40 +94,61 @@ export default function Projects() {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${(100 * (projects.length - 1)) / projects.length}%`]);
 
   return (
-    <section 
-      id="projects" 
-      ref={targetRef} 
-      className="relative bg-black"
-      // Height = number of projects * 100vh so that each project takes 1 viewport height of scrolling
-      style={{ height: `${projects.length * 100}vh` }}
-    >
-      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-        
-        {/* Fixed Title Header overlay */}
-        <div className="absolute top-12 left-6 md:left-12 xl:left-24 z-10 pointer-events-none mix-blend-difference">
-          <span className="text-zinc-500 font-mono text-sm tracking-[0.3em] uppercase block mb-2">03 — 開発実績</span>
-          <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter">
+    <section id="projects" ref={targetRef} className="relative bg-black">
+      
+      {/* Desktop Horizontal Scroll (Framer Motion) */}
+      <div className="hidden md:block" style={{ height: `${projects.length * 100}vh` }}>
+        <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+          {/* Fixed Title Header overlay */}
+          <div className="absolute top-12 left-6 md:left-12 xl:left-24 z-10 pointer-events-none mix-blend-difference">
+            <span className="text-zinc-500 font-mono text-sm tracking-[0.3em] uppercase block mb-2">03 — 開発実績</span>
+            <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter">
+              SYSTEMS & ARCHITECTURE
+            </h2>
+          </div>
+
+          {/* Scroll Progress Bar */}
+          <div className="absolute bottom-12 left-6 right-6 md:left-12 md:right-12 xl:left-24 xl:right-24 h-px bg-white/10 z-10">
+            <motion.div 
+              className="h-full bg-white origin-left"
+              style={{ scaleX: scrollYProgress }}
+            />
+          </div>
+
+          <motion.div 
+            style={{ x, width: `${projects.length * 100}vw` }} 
+            className="flex h-full"
+          >
+            {projects.map((project, index) => (
+              <ProjectCaseStudy key={project.id} project={project} index={index} />
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Mobile Native Horizontal Scroll (CSS Snap) */}
+      <div className="md:hidden relative w-full h-[100dvh] flex flex-col">
+        {/* Fixed Header for mobile */}
+        <div className="absolute top-24 left-6 right-6 z-10 pointer-events-none mix-blend-difference">
+          <span className="text-zinc-500 font-mono text-xs tracking-[0.3em] uppercase block mb-1">03 — 開発実績</span>
+          <h2 className="text-2xl font-black text-white tracking-tighter leading-none">
             SYSTEMS & ARCHITECTURE
           </h2>
         </div>
-
-        {/* Scroll Progress Bar */}
-        <div className="absolute bottom-12 left-6 right-6 md:left-12 md:right-12 xl:left-24 xl:right-24 h-px bg-white/10 z-10">
-          <motion.div 
-            className="h-full bg-white origin-left"
-            style={{ scaleX: scrollYProgress }}
-          />
-        </div>
-
-        <motion.div 
-          style={{ x, width: `${projects.length * 100}vw` }} 
-          className="flex h-full"
-        >
+        
+        {/* Scroll Container */}
+        <div className="flex w-full h-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory touch-pan-x hide-scrollbar">
           {projects.map((project, index) => (
-            <ProjectCaseStudy key={project.id} project={project} index={index} />
+            <div key={project.id} className="w-screen h-full shrink-0 snap-center snap-always flex items-center justify-center overflow-y-auto">
+              {/* Added mt-32 to push content down below the header */}
+              <div className="mt-20">
+                <ProjectCaseStudy project={project} index={index} />
+              </div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
+      
     </section>
   );
 }
