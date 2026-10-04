@@ -8,57 +8,72 @@ const container: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.05 }
+    transition: { staggerChildren: 0.1 }
   }
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, x: -10 },
-  show: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 100 } }
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } }
 };
 
 export default function Skills() {
   return (
     <Section id="skills" title="Neural Capabilities" number="02" subtitle="技術仕様 • Tech Specs">
-      <div className="os-card p-8 md:p-12 w-full">
-        {/* Terminal Header */}
-        <div className="flex items-center gap-2 mb-10 border-b border-white/10 pb-4">
-          <div className="w-3 h-3 rounded-full bg-red-500/80" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-          <div className="w-3 h-3 rounded-full bg-green-500/80" />
-          <span className="ml-4 text-xs font-mono uppercase tracking-widest text-zinc-500">~/system/capabilities</span>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-x-8 gap-y-12">
-          {(Object.keys(skills) as Array<keyof typeof skills>).map((category) => (
+      <div className="w-full max-w-7xl mx-auto">
+        <motion.div 
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {(Object.entries(skills)).map(([category, categorySkills], idx) => (
             <motion.div
               key={category}
-              variants={container}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="flex flex-col"
+              variants={item}
+              className="group relative flex flex-col p-8 bg-black/40 border border-white/5 hover:border-white/20 transition-colors duration-500 overflow-hidden"
             >
-              <h3 className="text-sm font-mono uppercase tracking-widest text-white mb-6 pb-2 border-b border-white/10">
-                {category}
-              </h3>
-              <ul className="flex flex-col gap-4">
-                {skills[category].map((skill) => (
-                  <motion.li
+              {/* Decorative Corner Borders */}
+              <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/20 group-hover:border-white/60 transition-colors" />
+              <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/20 group-hover:border-white/60 transition-colors" />
+              <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-white/20 group-hover:border-white/60 transition-colors" />
+              <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/20 group-hover:border-white/60 transition-colors" />
+
+              {/* Background Glow */}
+              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl pointer-events-none" />
+              
+              <div className="relative z-10 flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                <h3 className="text-sm font-mono tracking-widest uppercase text-white font-bold flex items-center gap-3">
+                  <span className="text-zinc-500 font-normal">0{idx + 1}</span>
+                  {category}
+                </h3>
+                {/* Simulated status light */}
+                <div className="w-1.5 h-1.5 rounded-full bg-zinc-600 group-hover:bg-green-400 group-hover:shadow-[0_0_8px_rgba(74,222,128,0.8)] transition-all duration-300" />
+              </div>
+
+              <div className="relative z-10 flex flex-wrap gap-3 mt-auto">
+                {categorySkills.map((skill) => (
+                  <span
                     key={skill.name}
-                    variants={item}
-                    className="group flex items-center gap-3 cursor-default"
+                    className="px-3 py-1.5 text-xs font-mono bg-white/5 text-zinc-400 border border-white/10 hover:bg-white hover:text-black hover:border-white transition-all duration-300 cursor-default"
                   >
-                    <span className="text-zinc-600 font-mono text-xs opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span>
-                    <span className="text-zinc-400 group-hover:text-white transition-colors duration-300 font-medium">
-                      {skill.name}
-                    </span>
-                  </motion.li>
+                    {skill.name}
+                  </span>
                 ))}
-              </ul>
+              </div>
+              
+              {/* Background Grid Pattern (Cyberpunk vibe) */}
+              <div 
+                className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 transition-opacity duration-700"
+                style={{ 
+                  backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)`,
+                  backgroundSize: '16px 16px' 
+                }} 
+              />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </Section>
   );
