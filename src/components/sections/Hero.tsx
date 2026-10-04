@@ -1,8 +1,7 @@
 'use client';
 
-import { motion, Variants, useMotionValue, useSpring } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import Section from '../ui/Section';
+import { motion, Variants } from 'framer-motion';
+import InteractiveGrid from '../ui/InteractiveGrid';
 import MagneticButton from '../ui/MagneticButton';
 import { personalDetails } from '../../data/portfolio';
 
@@ -11,211 +10,102 @@ const container: Variants = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2
+      staggerChildren: 0.1,
+      delayChildren: 0.3
     }
   }
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   show: { 
     opacity: 1, 
     y: 0, 
-    transition: { type: 'spring', stiffness: 100, damping: 15 } 
+    transition: { type: 'spring', stiffness: 80, damping: 20 } 
   }
 };
 
-const TypewriterEffect = ({ words }: { words: string[] }) => {
-  const [index, setIndex] = useState(0);
-  const [subIndex, setSubIndex] = useState(0);
-  const [reverse, setReverse] = useState(false);
-
-  useEffect(() => {
-    if (subIndex === words[index].length + 1 && !reverse) {
-      const timeout = setTimeout(() => setReverse(true), 1500);
-      return () => clearTimeout(timeout);
-    }
-
-    if (subIndex === 0 && reverse) {
-      setReverse(false);
-      setIndex((prev) => (prev + 1) % words.length);
-      return;
-    }
-
-    const timeout = setTimeout(() => {
-      setSubIndex((prev) => prev + (reverse ? -1 : 1));
-    }, reverse ? 50 : 100);
-
-    return () => clearTimeout(timeout);
-  }, [subIndex, index, reverse, words]);
-
-  return <span>{`${words[index].substring(0, subIndex)}`}</span>;
-};
-
 export default function Hero() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX - window.innerWidth / 2);
-      mouseY.set(e.clientY - window.innerHeight / 2);
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [mouseX, mouseY]);
   return (
-    <div id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background spanning full width of the screen */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <motion.div 
-          animate={{ 
-            rotate: 360,
-            scale: [1, 1.2, 1],
-          }} 
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          style={{ x: springX, y: springY }}
-          className="absolute -top-[20%] left-[-10%] md:left-[10%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] min-w-[400px] min-h-[400px] rounded-full bg-pink-500/20 blur-[120px]" 
-        />
-        <motion.div 
-          animate={{ 
-            rotate: -360,
-            scale: [1, 1.5, 1],
-          }} 
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          style={{ x: useSpring(mouseX, { stiffness: 40, damping: 25 }), y: useSpring(mouseY, { stiffness: 40, damping: 25 }) }}
-          className="absolute top-[30%] right-[-10%] md:right-[5%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] min-w-[300px] min-h-[300px] rounded-full bg-cyan-500/20 blur-[120px]" 
-        />
-      </div>
+    <div id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black selection:bg-white selection:text-black">
+      <InteractiveGrid />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-20 pb-48 flex flex-col justify-center items-center text-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col justify-center items-center text-center">
         <motion.div
           variants={container}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="max-w-3xl flex flex-col items-center gap-6"
+          animate="show"
+          className="flex flex-col items-center w-full"
         >
-          <motion.div 
-            variants={item} 
-            className="inline-block"
-            animate={{ y: [0, -5, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm font-medium tracking-wide shadow-[0_0_15px_rgba(255,255,255,0.05)] backdrop-blur-md">
-              Available for new opportunities <span className="opacity-50 mx-1">•</span> <span className="text-primary font-bold">新しい機会を求めて</span>
-            </span>
+          {/* Top metadata pill */}
+          <motion.div variants={item} className="mb-8 md:mb-12">
+            <div className="flex items-center gap-3 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[10px] sm:text-xs font-mono uppercase tracking-widest text-zinc-400">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span>Available for Impact</span>
+              <span className="opacity-50 mx-1">|</span>
+              <span className="text-white">新しい機会を求めて</span>
+            </div>
           </motion.div>
           
-          <motion.h1 variants={item} className="text-5xl md:text-7xl font-bold tracking-tight">
-            Hi, I'm <span className="text-gradient">Pragdishwar A</span>
-          </motion.h1>
-          
-          <motion.div variants={item} className="text-2xl md:text-3xl text-zinc-300 font-medium tracking-tight h-10 flex items-center gap-1">
-            <span>&gt;</span>
-            <TypewriterEffect 
-              words={["Full-Stack Developer", "AI Engineer", "Embedded IoT Enthusiast", "Otaku"]} 
-            />
-            <motion.span 
-              animate={{ opacity: [1, 0] }} 
-              transition={{ repeat: Infinity, duration: 0.8 }}
-              className="w-3 h-8 bg-primary block"
-            />
+          {/* Massive Typography Intro */}
+          <motion.div variants={item} className="flex flex-col items-center">
+            <h2 className="text-sm md:text-base font-mono text-zinc-500 tracking-[0.2em] uppercase mb-4">
+              [ {personalDetails.name} ]
+            </h2>
+            <h1 className="text-[12vw] sm:text-[8vw] md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-[0.85] text-white mix-blend-difference z-10">
+              ENGINEERING<br/>
+              <span className="text-zinc-600">IDEAS INTO</span><br/>
+              REAL SYSTEMS.
+            </h1>
           </motion.div>
           
-          <motion.p variants={item} className="text-lg text-zinc-400 max-w-2xl leading-relaxed mt-4">
-            Third-year CSE undergraduate based in Chennai, bridging software and hardware to build intelligent systems.
-          </motion.p>
+          {/* Minimalist Sub-description */}
+          <motion.div variants={item} className="mt-12 flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-8 max-w-2xl text-left border-l-2 border-white/20 pl-4 md:pl-6 ml-4 md:ml-0 self-center md:self-auto mx-auto w-full md:w-auto">
+            <p className="text-sm md:text-base text-zinc-400 font-mono leading-relaxed">
+              <span className="text-white block mb-1">SYS.INFO:</span>
+              Third-year CSE undergraduate based in Chennai. <br/>
+              Specializing in Full-Stack, AI, and Embedded IoT.
+            </p>
+          </motion.div>
 
-          <motion.div variants={item} className="flex flex-col md:flex-row gap-4 mt-4 w-full justify-center text-left md:text-center">
-            <div className="flex flex-col items-center md:items-center text-center gap-3 p-5 glass-card rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-colors flex-1 shadow-lg shadow-black/20">
-              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shadow-[0_0_15px_rgba(124,58,237,0.3)]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-              </div>
-              <div>
-                <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-1">Web Platforms</h3>
-                <p className="text-xs text-zinc-400">React, TypeScript, modern cloud architecture.</p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center md:items-center text-center gap-3 p-5 glass-card rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-colors flex-1 shadow-lg shadow-black/20">
-              <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.3)]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
-              </div>
-              <div>
-                <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-1">Embedded IoT</h3>
-                <p className="text-xs text-zinc-400">ESP32, Python, sensor integration.</p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center md:items-center text-center gap-3 p-5 glass-card rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-colors flex-1 shadow-lg shadow-black/20">
-              <div className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.3)]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" /></svg>
-              </div>
-              <div>
-                <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-1">Applied AI</h3>
-                <p className="text-xs text-zinc-400">FastAPI, computer vision, data pipelines.</p>
-              </div>
-            </div>
-          </motion.div>
-          
-          <motion.div variants={item} className="flex flex-wrap items-center justify-center gap-4 mt-8">
+          <motion.div variants={item} className="flex flex-col sm:flex-row items-center gap-4 mt-16">
             <MagneticButton>
               <a
                 href="#projects"
-                className="inline-block px-8 py-4 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.6)]"
+                className="group flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-white text-black font-medium hover:bg-zinc-200 transition-all text-sm uppercase tracking-wider"
               >
-                View Projects
-              </a>
-            </MagneticButton>
-            <MagneticButton>
-              <a
-                href="#contact"
-                className="inline-block px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-all"
-              >
-                Contact Me
+                <span>Initialize Sequence</span>
+                <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
               </a>
             </MagneticButton>
           </motion.div>
         </motion.div>
-
       </div>
 
-      {/* Infinite Marquee */}
-      <div className="absolute bottom-24 left-0 w-full overflow-hidden border-y-2 border-primary py-4 bg-zinc-950/50 backdrop-blur-md z-20">
+      {/* Infinite scrolling bottom ticker */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden border-t border-white/10 bg-black/50 backdrop-blur-md z-20 py-3">
         <motion.div 
           className="flex whitespace-nowrap w-max"
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
+          transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
         >
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex shrink-0 items-center">
               {['FRONTEND DEVELOPMENT', 'AI ENGINEERING', 'EMBEDDED SYSTEMS', 'FULL STACK ARCHITECTURE', 'INTELLIGENT IoT'].map((item, j) => (
                 <div key={j} className="flex items-center">
-                  <span className="text-white font-black text-xl md:text-2xl tracking-widest px-8 md:px-12 uppercase">{item}</span>
-                  <div className="w-3 h-3 bg-pink-500 rounded-sm shadow-[0_0_10px_rgba(236,72,153,0.8)]" />
+                  <span className="text-zinc-500 font-mono text-xs tracking-[0.3em] px-8 md:px-12 uppercase">{item}</span>
+                  <div className="w-1 h-1 bg-zinc-700 rounded-full" />
                 </div>
               ))}
             </div>
           ))}
         </motion.div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-zinc-500 z-20"
-      >
-        <span className="text-[10px] font-mono uppercase tracking-[0.3em]">Scroll</span>
-        <motion.div
-          animate={{ height: ["0px", "20px", "0px"], opacity: [0, 1, 0], y: [0, 10, 20] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px bg-zinc-500"
-        />
-      </motion.div>
     </div>
   );
 }

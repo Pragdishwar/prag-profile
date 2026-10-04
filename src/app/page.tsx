@@ -5,7 +5,6 @@ import About from '@/components/sections/About';
 import Skills from '@/components/sections/Skills';
 import Projects from '@/components/sections/Projects';
 import Experience from '@/components/sections/Experience';
-import ProfileExtras from '@/components/sections/ProfileExtras';
 import Contact from '@/components/sections/Contact';
 import SakuraFall from '@/components/ui/SakuraFall';
 import AnimeCursor from '@/components/ui/AnimeCursor';
@@ -138,12 +137,11 @@ export default function Home() {
         <Skills />
         <Projects />
         <Experience />
-        <ProfileExtras />
         <Contact />
         
         {/* Footer */}
-        <footer className="text-center py-16 text-zinc-500 text-sm border-t border-white/5 flex flex-col items-center justify-center gap-2 overflow-hidden w-full">
-          <p>© {new Date().getFullYear()} Pragdishwar A.</p>
+        <footer className="text-center py-16 text-zinc-500 text-sm border-t border-white/10 bg-black flex flex-col items-center justify-center gap-2 overflow-hidden w-full">
+          <p className="font-mono text-xs uppercase tracking-widest text-zinc-600">SYSTEM.HALT © {new Date().getFullYear()} Pragdishwar A.</p>
           <div className="font-mono text-xs tracking-widest uppercase text-zinc-600 mt-2 text-center w-full max-w-4xl px-4 min-h-[3rem] relative mx-auto flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.p
@@ -152,7 +150,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.5 }}
-                className="absolute w-full px-4"
+                className="absolute w-full px-4 text-zinc-700"
               >
                 {animeQuotes[quoteIndex]}
               </motion.p>

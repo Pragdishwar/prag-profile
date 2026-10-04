@@ -1,7 +1,6 @@
 'use client';
 
 import { motion, Variants } from 'framer-motion';
-import SpotlightCard from '../ui/SpotlightCard';
 import Section from '../ui/Section';
 import { experience } from '../../data/portfolio';
 
@@ -20,64 +19,63 @@ const item: Variants = {
 
 export default function Experience() {
   return (
-    <Section id="experience" title="Experience" number="04" subtitle="職歴・経験 • Journey">
-      <div className="flex flex-col gap-12">
+    <Section id="experience" title="Operational History" number="04" subtitle="職歴・経験 • Trajectory">
+      <div className="max-w-4xl mx-auto w-full relative">
+        {/* Sleek Vertical Line */}
+        <motion.div 
+          initial={{ height: 0 }}
+          whileInView={{ height: '100%' }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, ease: 'easeInOut' }}
+          className="absolute left-[7px] md:left-[39px] top-4 bottom-0 w-px bg-white/10"
+        />
 
-        <div className="max-w-3xl mx-auto w-full px-4 sm:px-6 md:px-8">
-          <div className="relative">
-            {/* Animated Timeline Line */}
-            <motion.div 
-              initial={{ height: 0 }}
-              whileInView={{ height: '100%' }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, ease: 'easeOut' }}
-              className="absolute left-[7px] md:left-[23px] top-8 md:top-10 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-transparent"
-            />
-
-            <motion.div
-              variants={container}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="flex flex-col gap-10"
-            >
-              {experience.map((exp) => (
-                <motion.div key={exp.id} variants={item} className="relative pl-12 md:pl-20">
-                  {/* Timeline Dot */}
-                  <motion.div 
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    transition={{ type: 'spring', stiffness: 200, damping: 10, delay: 0.2 }}
-                    className="absolute left-0 md:left-4 top-[32px] md:top-[40px] w-4 h-4 rounded-full bg-primary border-2 md:border-4 border-background z-10 shadow-[0_0_15px_rgba(124,58,237,0.8)] hover:scale-150 transition-transform duration-300" 
-                  />
-                  
-                  <SpotlightCard className="p-6 md:p-8 rounded-2xl">
-                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold text-white">{exp.role}</h3>
-                        <p className="text-lg text-primary font-medium">{exp.company}</p>
-                      </div>
-                      <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm font-medium text-zinc-300 w-fit shrink-0">
-                        {exp.duration}
-                      </span>
-                    </div>
-                    
-                    <ul className="flex flex-col gap-3 mt-4">
-                      {exp.description.map((desc, i) => (
-                        <li key={i} className="flex gap-3 text-zinc-400">
-                          <span className="text-primary mt-1.5 shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                          </span>
-                          <span className="leading-relaxed">{desc}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </SpotlightCard>
-                </motion.div>
-              ))}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="flex flex-col gap-16"
+        >
+          {experience.map((exp, idx) => (
+            <motion.div key={exp.id} variants={item} className="relative pl-12 md:pl-28 group">
+              {/* Timeline Node */}
+              <div className="absolute left-0 md:left-[32px] top-1.5 flex items-center justify-center">
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ delay: 0.2 + idx * 0.1 }}
+                  className="w-[15px] h-[15px] rounded-full bg-black border-2 border-white/20 group-hover:border-white transition-colors duration-300 relative z-10"
+                />
+                <div className="absolute w-[45px] h-px bg-white/10 left-[15px] hidden md:block" />
+              </div>
+              
+              <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2 md:gap-8 mb-4">
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">{exp.role}</h3>
+                  <p className="text-base text-zinc-400 font-medium">{exp.company}</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-mono uppercase tracking-widest text-zinc-500 whitespace-nowrap">
+                    {exp.duration}
+                  </span>
+                </div>
+              </div>
+              
+              <div className="os-card p-6 md:p-8 mt-4 rounded-lg relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-1 h-full bg-white/20 group-hover:bg-white transition-colors duration-500" />
+                <ul className="flex flex-col gap-4">
+                  {exp.description.map((desc, i) => (
+                    <li key={i} className="flex gap-4 text-zinc-300">
+                      <span className="text-white/30 font-mono text-sm mt-0.5 select-none">{i + 1}.</span>
+                      <span className="leading-relaxed text-sm md:text-base">{desc}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
-          </div>
-        </div>
+          ))}
+        </motion.div>
       </div>
     </Section>
   );
