@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Terminal from '../components/ui/Terminal';
 import BootScreen from '../components/ui/BootScreen';
 import SmoothScroll from '../components/ui/SmoothScroll';
+import CursorAndSound from '../components/ui/CursorAndSound';
 
 export const metadata: Metadata = {
   title: 'Pragdishwar A | Full Stack & AI Engineer',
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SmoothScroll>
           <BootScreen />
           <Terminal />
+          <CursorAndSound />
           <Navbar />
           {children}
           <Analytics />
