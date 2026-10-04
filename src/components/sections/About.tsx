@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import GitHubCalendar from 'react-github-calendar';
 import Section from '../ui/Section';
 import { personalDetails, interests } from '../../data/portfolio';
 
@@ -77,9 +78,20 @@ export default function About() {
               GitHub <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
             </a>
           </div>
-          {/* Grayscale github graph */}
+          {/* Realtime GitHub Calendar */}
           <div className="w-full overflow-x-auto overflow-y-hidden rounded-md flex justify-start sm:justify-center relative z-10 filter grayscale contrast-125 opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-            <img src="https://ghchart.rshah.org/ffffff/Pragdishwar" alt="GitHub Chart" className="min-w-[700px] h-32 object-cover object-left" />
+            <div className="min-w-fit">
+              <GitHubCalendar 
+                username="Pragdishwar" 
+                colorScheme="dark"
+                theme={{
+                  dark: ['#18181b', '#3b0764', '#6b21a8', '#9333ea', '#c084fc']
+                }}
+                fontSize={12}
+                blockSize={10}
+                blockMargin={4}
+              />
+            </div>
           </div>
           {/* Subtle background glow */}
           <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent pointer-events-none" />
