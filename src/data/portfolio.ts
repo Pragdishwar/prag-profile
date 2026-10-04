@@ -71,23 +71,14 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 'orca',
-    title: 'ORCA',
-    description: 'Agentic marine advisory platform for safe harbour bar crossing.',
-    longDescription: 'An intelligent marine advisory platform for the Muthalapozhi inlet in Kerala. It answers natural-language queries about crossing the harbour bar with deterministic verdicts, return windows, and turn-back times specific to hull classes, utilizing synthetic marine data and an agentic rule engine.',
-    techStack: ['React', 'Python', 'FastAPI', 'MapLibre GL', 'Zustand', 'Tailwind CSS'],
-    githubLink: 'https://github.com/Pragdishwar/ORCA',
-    liveLink: '    https://orca-nav.vercel.app/',
-    image: 'https://api.microlink.io/?url=https%3A%2F%2Forca-nav.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url'
-  },
-  {
-    id: 'equeue',
-    title: 'Equeue',
-    description: 'Smart virtual token-based queue management system.',
-    longDescription: 'A modern queue management application built to eliminate physical waiting lines. Customers can join queues remotely, monitor their position in real-time, and check-in via QR code. Includes a comprehensive Admin Management console for branch operators.',
-    techStack: ['Flutter', 'Dart', 'Riverpod', 'GoRouter', 'Supabase', 'PostgreSQL'],
-    githubLink: 'https://github.com/Pragdishwar/Equeue',
-    image: 'https://api.microlink.io/?url=https%3A%2F%2Fgithub.com%2FPragdishwar%2FEqueue&screenshot=true&meta=false&embed=screenshot.url'
+    id: 'anomaly-grammar',
+    title: 'Anomaly Grammar',
+    description: 'Time-series anomaly detection tool with interactive data visualization and failure marking.',
+    longDescription: 'A full-stack application for anomaly detection and visualization. Features a Python backend for data ingestion and a React (Vite) frontend with Recharts, MotifHighlighter, and interactive failure marking capabilities.',
+    techStack: ['React', 'Vite', 'Recharts', 'Python', 'FastAPI'],
+    githubLink: 'https://github.com/Pragdishwar/Anomaly-Grammar',
+    liveLink: 'https://anomaly-grammar.vercel.app',
+    image: 'https://api.microlink.io/?url=https%3A%2F%2Fanomaly-grammar.vercel.app&screenshot=true&meta=false&embed=screenshot.url'
   },
   {
     id: 'argus',
@@ -100,14 +91,14 @@ export const projects: Project[] = [
     image: 'https://api.microlink.io/?url=https%3A%2F%2Fargus-red.vercel.app&screenshot=true&meta=false&embed=screenshot.url'
   },
   {
-    id: 'anomaly-grammar',
-    title: 'Anomaly Grammar',
-    description: 'Time-series anomaly detection tool with interactive data visualization and failure marking.',
-    longDescription: 'A full-stack application for anomaly detection and visualization. Features a Python backend for data ingestion and a React (Vite) frontend with Recharts, MotifHighlighter, and interactive failure marking capabilities.',
-    techStack: ['React', 'Vite', 'Recharts', 'Python', 'FastAPI'],
-    githubLink: 'https://github.com/Pragdishwar/Anomaly-Grammar',
-    liveLink: 'https://anomaly-grammar.vercel.app',
-    image: 'https://api.microlink.io/?url=https%3A%2F%2Fanomaly-grammar.vercel.app&screenshot=true&meta=false&embed=screenshot.url'
+    id: 'borderland-arena',
+    title: 'Borderland Arena',
+    description: 'Gamified technical competition platform with real-time sync and anti-cheat systems.',
+    longDescription: 'A high-intensity competitive programming platform featuring real-time synchronization via Supabase, an integrated code execution engine using Piston API, and an automated "Atmospheric Breach" anti-cheat system. Includes an admin command center for game management.',
+    techStack: ['React', 'Supabase', 'Monaco Editor', 'Tailwind CSS', 'TanStack Query'],
+    liveLink: 'https://borderland-arena.vercel.app',
+    githubLink: 'https://github.com/Pragdishwar/borderland-arena',
+    image: 'https://api.microlink.io/?url=https%3A%2F%2Fborderland-arena.vercel.app&screenshot=true&meta=false&embed=screenshot.url'
   },
   {
     id: 'earn2equity',
@@ -120,6 +111,25 @@ export const projects: Project[] = [
     image: 'https://api.microlink.io/?url=https%3A%2F%2Fearn2equity.vercel.app&screenshot=true&meta=false&embed=screenshot.url'
   },
   {
+    id: 'equeue',
+    title: 'Equeue',
+    description: 'Smart virtual token-based queue management system.',
+    longDescription: 'A modern queue management application built to eliminate physical waiting lines. Customers can join queues remotely, monitor their position in real-time, and check-in via QR code. Includes a comprehensive Admin Management console for branch operators.',
+    techStack: ['Flutter', 'Dart', 'Riverpod', 'GoRouter', 'Supabase', 'PostgreSQL'],
+    githubLink: 'https://github.com/Pragdishwar/Equeue',
+    image: 'https://api.microlink.io/?url=https%3A%2F%2Fgithub.com%2FPragdishwar%2FEqueue&screenshot=true&meta=false&embed=screenshot.url'
+  },
+  {
+    id: 'orca',
+    title: 'ORCA',
+    description: 'Agentic marine advisory platform for safe harbour bar crossing.',
+    longDescription: 'An intelligent marine advisory platform for the Muthalapozhi inlet in Kerala. It answers natural-language queries about crossing the harbour bar with deterministic verdicts, return windows, and turn-back times specific to hull classes, utilizing synthetic marine data and an agentic rule engine.',
+    techStack: ['React', 'Python', 'FastAPI', 'MapLibre GL', 'Zustand', 'Tailwind CSS'],
+    githubLink: 'https://github.com/Pragdishwar/ORCA',
+    liveLink: '    https://orca-nav.vercel.app/',
+    image: 'https://api.microlink.io/?url=https%3A%2F%2Forca-nav.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url'
+  },
+  {
     id: 'routemonk',
     title: 'RouteMonk',
     description: 'Intelligent delivery route optimizer with real-time weather and perishability scoring.',
@@ -128,16 +138,6 @@ export const projects: Project[] = [
     githubLink: 'https://github.com/Pragdishwar/routemonk',
     liveLink: 'https://routemonk-pro.vercel.app',
     image: 'https://api.microlink.io/?url=https%3A%2F%2Froutemonk-pro.vercel.app&screenshot=true&meta=false&embed=screenshot.url'
-  },
-  {
-    id: 'borderland-arena',
-    title: 'Borderland Arena',
-    description: 'Gamified technical competition platform with real-time sync and anti-cheat systems.',
-    longDescription: 'A high-intensity competitive programming platform featuring real-time synchronization via Supabase, an integrated code execution engine using Piston API, and an automated "Atmospheric Breach" anti-cheat system. Includes an admin command center for game management.',
-    techStack: ['React', 'Supabase', 'Monaco Editor', 'Tailwind CSS', 'TanStack Query'],
-    liveLink: 'https://borderland-arena.vercel.app',
-    githubLink: 'https://github.com/Pragdishwar/borderland-arena',
-    image: 'https://api.microlink.io/?url=https%3A%2F%2Fborderland-arena.vercel.app&screenshot=true&meta=false&embed=screenshot.url'
   },
   {
     id: 'vision-awd',
