@@ -52,8 +52,10 @@ export default function Hero() {
           
           {/* Massive Typography Intro */}
           <motion.div variants={item} className="flex flex-col items-center">
-            <h2 className="text-sm md:text-base font-mono text-zinc-500 tracking-[0.2em] uppercase mb-4">
-              [ {personalDetails.name} ]
+            <h2 className="text-xl md:text-3xl font-mono text-white tracking-[0.3em] uppercase mb-6 font-bold flex items-center gap-4">
+              <span className="text-zinc-600 font-light">[</span> 
+              {personalDetails.name} 
+              <span className="text-zinc-600 font-light">]</span>
             </h2>
             <h1 className="text-[12vw] sm:text-[8vw] md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-[0.85] text-white mix-blend-difference z-10">
               ENGINEERING<br/>

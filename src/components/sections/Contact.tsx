@@ -1,9 +1,41 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { personalDetails } from '../../data/portfolio';
 
 export default function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.target as HTMLFormElement);
+    // 🔑 Replace this with your Web3Forms Access Key
+    formData.append("access_key", "c8b584bd-9ada-4c4d-b97f-82239031e6ef");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+      
+      if (response.ok) {
+        setIsSuccess(true);
+        (e.target as HTMLFormElement).reset();
+        setTimeout(() => setIsSuccess(false), 5000);
+      } else {
+        alert("Something went wrong! Please try again.");
+      }
+    } catch (error) {
+      alert("Error submitting form.");
+    }
+    
+    setIsSubmitting(false);
+  };
+
   return (
     <div id="contact" className="w-full min-h-[70vh] flex flex-col items-center justify-center py-32 px-6 relative overflow-hidden bg-black">
       
@@ -15,7 +47,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col items-center"
+          className="flex flex-col items-center w-full"
         >
           <span className="text-zinc-500 font-mono text-sm tracking-[0.3em] uppercase mb-8">
             05 — End of Sequence
@@ -27,7 +59,7 @@ export default function Contact() {
             INTERESTING.
           </h2>
 
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8 mt-8">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8 mt-4 mb-24">
             <a 
               href={"mailto:" + personalDetails.email} 
               className="group flex flex-col items-center gap-2"
@@ -62,6 +94,80 @@ export default function Contact() {
               <span className="text-xs font-mono uppercase tracking-widest text-zinc-500 group-hover:text-white transition-colors">LinkedIn</span>
             </a>
           </div>
+
+          <div className="w-full max-w-2xl mx-auto text-left os-card p-6 md:p-10">
+            <div className="flex items-center gap-2 mb-8 border-b border-white/10 pb-4">
+              <div className="w-2 h-2 rounded-full bg-green-500/80 animate-pulse" />
+              <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">Initiate Communication Protocol</span>
+            </div>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full">
+              
+              <div className="flex flex-col gap-2">
+                <label htmlFor="name" className="text-xs font-mono tracking-widest text-zinc-400 uppercase">Identity</label>
+                <input 
+                  type="text" 
+                  name="name" 
+                  id="name" 
+                  required
+                  className="bg-black/50 border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-white transition-colors w-full"
+                  placeholder="John Doe"
+                />
+              </div>
+              
+              <div className="flex flex-col gap-2">
+                <label htmlFor="email" className="text-xs font-mono tracking-widest text-zinc-400 uppercase">Return Address</label>
+                <input 
+                  type="email" 
+                  name="email" 
+                  id="email" 
+                  required
+                  className="bg-black/50 border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-white transition-colors w-full"
+                  placeholder="john@example.com"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="subject" className="text-xs font-mono tracking-widest text-zinc-400 uppercase">Subject</label>
+                <input 
+                  type="text" 
+                  name="subject" 
+                  id="subject" 
+                  required
+                  className="bg-black/50 border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-white transition-colors w-full"
+                  placeholder="Collaboration Inquiry"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="message" className="text-xs font-mono tracking-widest text-zinc-400 uppercase">Payload</label>
+                <textarea 
+                  name="message" 
+                  id="message" 
+                  required
+                  rows={5}
+                  className="bg-black/50 border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-white transition-colors w-full resize-none font-mono text-sm"
+                  placeholder="Enter message data..."
+                />
+              </div>
+
+              <motion.button 
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                type="submit" 
+                disabled={isSubmitting || isSuccess}
+                className={"w-full py-4 rounded-md font-mono text-sm tracking-wider uppercase flex items-center justify-center gap-2 mt-4 transition-colors border " + (isSuccess ? 'bg-green-500 text-black border-green-500' : 'bg-white text-black border-white hover:bg-zinc-200 disabled:opacity-50')}
+              >
+                {isSubmitting ? (
+                  'Transmitting...'
+                ) : isSuccess ? (
+                  <>Transmission Successful <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg></>
+                ) : (
+                  <>Execute Send <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></>
+                )}
+              </motion.button>
+            </form>
+          </div>
+
         </motion.div>
       </div>
     </div>
