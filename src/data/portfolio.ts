@@ -149,7 +149,7 @@ export const projects: Project[] = [
     githubLink: 'https://github.com/Pragdishwar/Vision-AWD',
     image: 'https://api.microlink.io/?url=https%3A%2F%2Fvision-based-awd.vercel.app&screenshot=true&meta=false&embed=screenshot.url'
   }
-];
+].sort((a, b) => a.title.localeCompare(b.title));
 
 export interface Experience {
   id: string;
