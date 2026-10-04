@@ -30,7 +30,7 @@ export default function Hero() {
     <div id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black selection:bg-white selection:text-black">
       <InteractiveGrid />
 
-      <div className="relative z-30 w-full max-w-7xl mx-auto px-6 pb-20 flex flex-col justify-center items-center text-center">
+      <div className="relative z-30 w-full max-w-7xl mx-auto px-6 pt-32 pb-20 flex flex-col justify-center items-center text-center">
         <motion.div
           variants={container}
           initial="hidden"
