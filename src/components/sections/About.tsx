@@ -7,7 +7,7 @@ import { personalDetails, interests } from '../../data/portfolio';
 
 export default function About() {
   return (
-    <Section id="about" title="System Profile" number="01" subtitle="私について • Identity">
+    <Section id="about" title="Operative Profile" number="01" subtitle="基本データ • Base Identity">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         
         {/* Main Identity Box */}

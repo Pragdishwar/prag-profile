@@ -19,7 +19,7 @@ const item: Variants = {
 
 export default function Skills() {
   return (
-    <Section id="skills" title="Technical Arsenal" number="02" subtitle="技術・専門知識 • Capabilities">
+    <Section id="skills" title="Neural Capabilities" number="02" subtitle="技術仕様 • Tech Specs">
       <div className="os-card p-8 md:p-12 w-full">
         {/* Terminal Header */}
         <div className="flex items-center gap-2 mb-10 border-b border-white/10 pb-4">

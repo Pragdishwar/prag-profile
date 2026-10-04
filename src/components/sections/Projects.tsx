@@ -101,9 +101,9 @@ export default function Projects() {
         <div className="sticky top-0 h-screen flex items-center overflow-hidden">
           {/* Fixed Title Header overlay */}
           <div className="absolute top-12 left-6 md:left-12 xl:left-24 z-10 pointer-events-none mix-blend-difference">
-            <span className="text-zinc-500 font-mono text-sm tracking-[0.3em] uppercase block mb-2">03 — 開発実績</span>
+            <span className="text-zinc-500 font-mono text-sm tracking-[0.3em] uppercase block mb-2">03 — 開発実績 • Project Archives</span>
             <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter">
-              SYSTEMS & ARCHITECTURE
+              DEPLOYED ARCHITECTURE
             </h2>
           </div>
 
@@ -130,9 +130,9 @@ export default function Projects() {
       <div className="md:hidden relative w-full h-[100dvh] flex flex-col">
         {/* Fixed Header for mobile */}
         <div className="absolute top-24 left-6 right-6 z-10 pointer-events-none mix-blend-difference">
-          <span className="text-zinc-500 font-mono text-xs tracking-[0.3em] uppercase block mb-1">03 — 開発実績</span>
+          <span className="text-zinc-500 font-mono text-xs tracking-[0.3em] uppercase block mb-1">03 — 開発実績 • Project Archives</span>
           <h2 className="text-2xl font-black text-white tracking-tighter leading-none">
-            SYSTEMS & ARCHITECTURE
+            DEPLOYED ARCHITECTURE
           </h2>
         </div>
         

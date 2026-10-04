@@ -19,7 +19,7 @@ const item: Variants = {
 
 export default function Experience() {
   return (
-    <Section id="experience" title="Operational History" number="04" subtitle="職歴・経験 • Trajectory">
+    <Section id="experience" title="Operational Logs" number="04" subtitle="業務記録 • Career Trajectory">
       <div className="max-w-4xl mx-auto w-full relative">
         {/* Sleek Vertical Line */}
         <motion.div 

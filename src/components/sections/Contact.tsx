@@ -50,13 +50,13 @@ export default function Contact() {
           className="flex flex-col items-center w-full"
         >
           <span className="text-zinc-500 font-mono text-sm tracking-[0.3em] uppercase mb-8">
-            05 — End of Sequence
+            06 — 通信確立 • End of Sequence
           </span>
 
           <h2 className="text-[10vw] md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-white mb-12">
-            LET'S BUILD<br />
-            <span className="text-zinc-600">SOMETHING</span><br />
-            INTERESTING.
+            ESTABLISH<br />
+            <span className="text-zinc-600">SECURE</span><br />
+            CONNECTION.
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 mt-16 w-full max-w-6xl mx-auto">

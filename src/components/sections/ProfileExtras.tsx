@@ -72,7 +72,7 @@ export default function ProfileExtras() {
   }, []);
 
   return (
-    <Section id="profile-extras" className="pt-10 pb-20" title="Background" number="05" subtitle="背景・資格 • Background">
+    <Section id="profile-extras" className="pt-10 pb-20" title="Auxiliary Data" number="05" subtitle="付加情報 • Background Assets">
       <div className="flex flex-col gap-16 max-w-5xl mx-auto w-full">
         
         {/* Education & Languages Row */}
